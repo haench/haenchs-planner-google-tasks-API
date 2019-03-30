@@ -1,0 +1,1 @@
+"C:\Program Files\ImageMagick-7.0.8-Q16\convert" -background none favicon.svg -define icon:auto-resize favicon.ico
