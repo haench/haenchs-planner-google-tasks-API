@@ -1,10 +1,12 @@
 {
   "name": "haenchs-planner",
+  "homepage": "https://haench.github.io/haenchs-planner/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "array-move": "^2.0.0",
     "date-fns": "^1.30.1",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-collapsed": "^2.0.0",
     "react-debounce-input": "^3.2.0",
@@ -20,6 +22,8 @@
     "uniqid": "^5.0.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
