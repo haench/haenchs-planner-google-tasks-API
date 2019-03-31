@@ -59,8 +59,8 @@ const WelcomePage = () => {
           <GoogleLogin
             clientId={config.clientId}
             scope="https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/calendar"
-            // onSuccess={response => appStore.init(response)}
-            onSuccess={response => console.log("login")}
+            onSuccess={response => appStore.init(response)}
+            // onSuccess={response => console.log("login")}
             onFailure={response => console.log("onFailure", response)}
             onRequest={response => console.log("onRequest", response)}
             isSignedIn={true}

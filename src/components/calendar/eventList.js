@@ -4,7 +4,7 @@ import deLocale from "date-fns/locale/de";
 import { view } from "react-easy-state";
 import styled from "styled-components";
 import eventStore from "stores/eventStore";
-import Dot from "components/styled.components/dot.styled";
+import Dot from "components/styled.components/dot";
 
 const SnappingList = styled.div`
   flex: 1 0;

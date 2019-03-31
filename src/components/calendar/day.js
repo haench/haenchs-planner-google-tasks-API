@@ -1,6 +1,6 @@
 import React from "react";
-import Dot from "components/styled.components/dot.styled";
-import Line from "components/styled.components/line.styled";
+import Dot from "components/styled.components/dot";
+import Line from "components/styled.components/line";
 import { view } from "react-easy-state";
 import styled from "styled-components";
 import { isWeekend, isToday } from "date-fns";

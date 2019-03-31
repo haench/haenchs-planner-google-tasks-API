@@ -12,6 +12,7 @@ const appStore = store({
   useImage: null,
   isLoggedIn: false,
   isConfigOpen: false,
+  isAboutOpen: false,
 
   async init(response) {
     // Show loader here

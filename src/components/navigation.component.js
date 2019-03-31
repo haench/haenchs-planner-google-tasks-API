@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { view } from "react-easy-state";
 import { GoogleLogout } from "react-google-login";
 
-import appStore from "../stores/appStore";
+import appStore from "stores/appStore";
 
 import { Google as GoogleIcon } from "styled-icons/boxicons-logos/Google";
 import { LogOut as LogOutIconBase } from "styled-icons/feather/LogOut";
@@ -12,7 +12,8 @@ import { Calendar as CalendarIconBase } from "styled-icons/feather/Calendar";
 import { Settings as SettingsIconBase } from "styled-icons/feather/Settings";
 import { HelpCircle as HelpCircleBase } from "styled-icons/feather/HelpCircle";
 
-import ConfigDialog from "./config.component";
+import ConfigDialog from "components/config.component";
+import AboutPopup from "components/about.component";
 
 const LogoutIcon = styled(LogOutIconBase)`
   color: #fdfdfd;
@@ -75,7 +76,18 @@ const Navigation = props => {
             appStore.appState = "tasks";
           }}
         />
-        <HelpCircle size="32" />
+        <HelpCircle
+          size="32"
+          onClick={() => {
+            appStore.isAboutOpen = true;
+          }}
+        />
+        <AboutPopup
+          isAboutOpen={appStore.isAboutOpen}
+          closeAbout={() => {
+            appStore.isAboutOpen = false;
+          }}
+        />
         <SettingsIcon
           size="32"
           onClick={() => {

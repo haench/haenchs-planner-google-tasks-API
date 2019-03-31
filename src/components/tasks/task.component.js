@@ -3,7 +3,7 @@ import { view } from "react-easy-state";
 import tasksStore from "../../stores/tasksStore";
 import { SortableElement } from "react-sortable-hoc";
 import styled from "styled-components";
-import Checkbox from "components/styled.components/Checkbox";
+import Checkbox from "components/styled.components/checkbox";
 import { DebounceInput } from "react-debounce-input";
 import DeleteButton from "components/styled.components/deleteButton";
 
