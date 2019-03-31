@@ -1,25 +1,22 @@
 import React from "react";
 import { view } from "react-easy-state";
-import TaskLists from "./tasklists.component";
-import Tasks from "./tasks.component";
-import TaskDetails from "./taskDetails.component";
+import TaskLists from "./tasks/tasklists.component";
+import Tasks from "./tasks/tasks.component";
+import TaskDetails from "./tasks/taskDetails.component";
 import styled from "styled-components";
 import useKeyPress from "./../utils/useKeyPress.hook";
 import tasksStore from "./../stores/tasksStore";
 import appStore from "../stores/appStore";
-import AuthPage from "./auth.component";
+import WelcomePage from "./welcome.component";
 import { Calendar } from "./calendar";
 import CalendarNav from "./calendar/calendarNav";
-//import Calendar from "./calendar/css_calendar";
-//import Calendar from "./calendar/table_calendar";
-// import "./calendar/style.css";
 
 const HApp = styled.div`
   height: 100vh;
   display: flex;
 `;
 
-const TasksApp = view(() => {
+const TasksPage = view(() => {
   return (
     <HApp>
       {/* <Navigation /> */}
@@ -32,7 +29,7 @@ const TasksApp = view(() => {
   );
 });
 
-const CalendarApp = () => {
+const CalendarPage = view(() => {
   return (
     <HApp>
       <CalendarNav />
@@ -43,7 +40,7 @@ const CalendarApp = () => {
       />
     </HApp>
   );
-};
+});
 
 const App = () => {
   console.log(React.version, appStore.appState);
@@ -51,9 +48,9 @@ const App = () => {
   useKeyPress("ArrowDown", () => tasksStore.nextTask());
 
   return {
-    auth: <AuthPage />,
-    tasks: <TasksApp />,
-    calendar: <CalendarApp />
+    auth: <WelcomePage />,
+    tasks: <TasksPage />,
+    calendar: <CalendarPage />
   }[appStore.appState];
 };
 

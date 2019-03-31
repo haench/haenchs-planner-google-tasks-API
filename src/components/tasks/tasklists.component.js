@@ -1,10 +1,10 @@
 import React from "react";
-import configStore from "../stores/configStore";
-import listsStore from "../stores/listsStore";
+import configStore from "../../stores/configStore";
+import listsStore from "../../stores/listsStore";
 import { view } from "react-easy-state";
 import ListsForm from "./listsForm.component";
 import styled from "styled-components";
-import Navigation from "./navigation.component";
+import Navigation from "../navigation.component";
 
 import TaskList from "./tasklist.component";
 

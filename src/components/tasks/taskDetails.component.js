@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import tasksStore from "../stores/tasksStore";
+import tasksStore from "../../stores/tasksStore";
 import { view } from "react-easy-state";
 import SimpleMDEReact from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";

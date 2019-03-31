@@ -1,11 +1,11 @@
 import React from "react";
 import { view } from "react-easy-state";
-import tasksStore from "./../stores/tasksStore";
+import tasksStore from "../../stores/tasksStore";
 import { SortableElement } from "react-sortable-hoc";
 import styled from "styled-components";
-import Checkbox from "./Checkbox";
+import Checkbox from "../Checkbox";
 import { DebounceInput } from "react-debounce-input";
-import DeleteButton from "./deleteButton";
+import DeleteButton from "../deleteButton";
 
 const LiTask = styled.div`
   display: flex;

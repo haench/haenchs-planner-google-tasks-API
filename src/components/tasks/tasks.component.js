@@ -1,6 +1,6 @@
 import React from "react";
-import tasksStore from "./../stores/tasksStore";
-import listsStore from "./../stores/listsStore";
+import tasksStore from "../../stores/tasksStore";
+import listsStore from "../../stores/listsStore";
 import { view } from "react-easy-state";
 import Task from "./task.component";
 import { SortableContainer } from "react-sortable-hoc";
@@ -11,7 +11,7 @@ import styled from "styled-components";
 import "../toggle_style.css";
 import { ToggleLeft } from "styled-icons/feather/ToggleLeft";
 import { ToggleRight } from "styled-icons/feather/ToggleRight";
-import Button from "./Button.styled";
+import Button from "../Button.styled";
 
 const MyToggle = props => {
   return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { view } from "react-easy-state";
-import tasksStore from "../stores/tasksStore";
-import listsStore from "../stores/listsStore";
+import tasksStore from "../../stores/tasksStore";
+import listsStore from "../../stores/listsStore";
 import DeleteButton from "./deleteButton";
 import EditButton from "./editButton";
 
