@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { view } from "react-easy-state";
 import EventList from "./eventList";
-import CalendarList from "./calendarList";
+import CalendarSelector from "./calendarSelector";
 import Navigation from "./../navigation.component";
 
 const NavigationPane = styled.div`
@@ -21,7 +21,7 @@ const CalendarNav = () => {
     <NavigationPane>
       <Navigation />
       <EventList />
-      <CalendarList />
+      <CalendarSelector />
     </NavigationPane>
   );
 };

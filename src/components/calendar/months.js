@@ -1,9 +1,6 @@
 import React from "react";
-
 import Day from "./day";
-
 import { view } from "react-easy-state";
-
 import styled from "styled-components";
 import {
   format,
@@ -42,9 +39,7 @@ const DummyDay = styled.td`
   min-width: 32px; */
 `;
 
-const Months = props => {
-  const { showWeekSeparators, firstDayOfWeek } = props;
-
+const Months = ({ showWeekSeparators, firstDayOfWeek, ...props }) => {
   const renderMonthDays = () => {
     console.time("concatenation");
     const months = [];

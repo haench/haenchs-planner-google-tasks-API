@@ -59,7 +59,7 @@ const CalendarButton = styled.div`
   border-top: 1px solid #475760;
 `;
 
-const CalendarList = () => {
+const CalendarSelector = () => {
   const { getCollapseProps, getToggleProps, isOpen } = useCollapse();
   return (
     <React.Fragment>
@@ -82,4 +82,4 @@ const CalendarList = () => {
   );
 };
 
-export default view(CalendarList);
+export default view(CalendarSelector);
