@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "components/app.component";
+import App from "components/app";
 import { ThemeProvider } from "styled-components";
 import "index.css";
 // import { Normalize } from "styled-normalize";

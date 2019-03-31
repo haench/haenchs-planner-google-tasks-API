@@ -2,11 +2,11 @@ import React from "react";
 import configStore from "stores/configStore";
 import listsStore from "stores/listsStore";
 import { view } from "react-easy-state";
-import ListsForm from "components/tasks/listsForm.component";
+import ListsForm from "components/tasks/listsForm";
 import styled from "styled-components";
-import Navigation from "components/navigation.component";
+import Navigation from "components/navigation";
 
-import TaskList from "components/tasks/tasklist.component";
+import TaskList from "components/tasks/tasklist";
 
 const ListsPane = styled.div`
   background: ${props => props.theme.darkgrey};

@@ -12,8 +12,8 @@ import { Calendar as CalendarIconBase } from "styled-icons/feather/Calendar";
 import { Settings as SettingsIconBase } from "styled-icons/feather/Settings";
 import { HelpCircle as HelpCircleBase } from "styled-icons/feather/HelpCircle";
 
-import ConfigDialog from "components/config.component";
-import AboutPopup from "components/about.component";
+import ConfigDialog from "components/config";
+import AboutPopup from "components/about";
 
 const LogoutIcon = styled(LogOutIconBase)`
   color: #fdfdfd;

@@ -7,7 +7,7 @@ import DeleteButton from "components/styled.components/deleteButton";
 import EditButton from "components/styled.components/editButton";
 
 import Pill from "components/styled.components/pill";
-import DeleteListDialog from "components/tasks/deleteListDialog.component";
+import DeleteListDialog from "components/tasks/deleteListDialog";
 
 const ButtonGroup = styled.div`
   display: ${props => (props.hidden ? "none" : "flex")};

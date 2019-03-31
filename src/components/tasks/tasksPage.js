@@ -1,8 +1,8 @@
 import React from "react";
 import { view } from "react-easy-state";
-import TaskLists from "components/tasks/tasklists.component";
-import Tasks from "components/tasks/tasks.component";
-import TaskDetails from "components/tasks/taskDetails.component";
+import TaskLists from "components/tasks/tasklists";
+import Tasks from "components/tasks/tasks";
+import TaskDetails from "components/tasks/taskDetails";
 import tasksStore from "stores/tasksStore";
 import styled from "styled-components";
 
