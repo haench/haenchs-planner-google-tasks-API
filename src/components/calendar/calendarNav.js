@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { view } from "react-easy-state";
-import EventList from "./eventList";
-import CalendarSelector from "./calendarSelector";
-import Navigation from "./../navigation.component";
+import EventList from "components/calendar/eventList";
+import CalendarSelector from "components/calendar/calendarSelector";
+import Navigation from "components/navigation.component";
 
 const NavigationPane = styled.div`
   background: ${props => props.theme.darkgrey};

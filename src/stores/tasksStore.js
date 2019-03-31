@@ -1,6 +1,6 @@
 import { store } from "react-easy-state";
-import gapiREST from "../utils/gapiREST.js";
-import listsStore from "./../stores/listsStore";
+import gapiREST from "utils/gapiREST.js";
+import listsStore from "stores/listsStore";
 
 const tasksStore = store({
   tasks: [],

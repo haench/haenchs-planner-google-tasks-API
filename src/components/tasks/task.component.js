@@ -1,6 +1,6 @@
 import React from "react";
 import { view } from "react-easy-state";
-import tasksStore from "../../stores/tasksStore";
+import tasksStore from "stores/tasksStore";
 import { SortableElement } from "react-sortable-hoc";
 import styled from "styled-components";
 import Checkbox from "components/styled.components/checkbox";

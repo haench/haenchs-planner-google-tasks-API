@@ -1,6 +1,6 @@
 import { createRef } from "react";
 import { store } from "react-easy-state";
-import gCalApi from "./../utils/gCalApi";
+import gCalApi from "utils/gCalApi";
 
 import {
   parse,

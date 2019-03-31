@@ -7,8 +7,6 @@ import { SortableContainer } from "react-sortable-hoc";
 import TaskForm from "components/tasks/taskForm.component";
 import arrayMove from "array-move";
 import styled from "styled-components";
-
-// import "../toggle_style.css";
 import { ToggleLeft } from "styled-icons/feather/ToggleLeft";
 import { ToggleRight } from "styled-icons/feather/ToggleRight";
 import Button from "components/styled.components/button";

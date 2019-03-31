@@ -1,8 +1,8 @@
 import React from "react";
 import { view } from "react-easy-state";
-import config from "../config";
+import config from "config";
 import { GoogleLogin } from "react-google-login";
-import appStore from "../stores/appStore";
+import appStore from "stores/appStore";
 import styled from "styled-components";
 
 const Welcome = styled.div`

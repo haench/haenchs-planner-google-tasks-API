@@ -1,8 +1,8 @@
 import { store } from "react-easy-state";
-import tasksStore from "../stores/tasksStore";
-import configStore from "./../stores/configStore";
-import listsStore from "./../stores/listsStore";
-import eventStore from "./../stores/eventStore";
+import tasksStore from "stores/tasksStore";
+import configStore from "stores/configStore";
+import listsStore from "stores/listsStore";
+import eventStore from "stores/eventStore";
 
 const appStore = store({
   isLoading: false,

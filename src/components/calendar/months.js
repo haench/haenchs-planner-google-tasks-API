@@ -1,5 +1,5 @@
 import React from "react";
-import Day from "./day";
+import Day from "components/calendar/day";
 import { view } from "react-easy-state";
 import styled from "styled-components";
 import {
@@ -8,7 +8,7 @@ import {
   differenceInDays,
   getDaysInMonth
 } from "date-fns";
-import eventStore from "../../stores/eventStore";
+import eventStore from "stores/eventStore";
 
 const WeekSeperator = styled.td`
   pointer-events: none;

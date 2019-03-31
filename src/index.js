@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/app.component";
+import App from "components/app.component";
 import { ThemeProvider } from "styled-components";
-import "./index.css";
+import "index.css";
 // import { Normalize } from "styled-normalize";
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from "serviceWorker";
 
 const colors = {
   blue: "#1070ca",

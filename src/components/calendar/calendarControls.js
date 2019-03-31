@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import eventStore from "../../stores/eventStore";
+import eventStore from "stores/eventStore";
 import { format } from "date-fns";
 import { PlusSquare } from "styled-icons/feather/PlusSquare";
 import { MinusSquare } from "styled-icons/feather/MinusSquare";

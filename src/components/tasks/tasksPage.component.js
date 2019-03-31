@@ -1,9 +1,9 @@
 import React from "react";
 import { view } from "react-easy-state";
-import TaskLists from "./tasklists.component";
-import Tasks from "./tasks.component";
-import TaskDetails from "./taskDetails.component";
-import tasksStore from "../../stores/tasksStore";
+import TaskLists from "components/tasks/tasklists.component";
+import Tasks from "components/tasks/tasks.component";
+import TaskDetails from "components/tasks/taskDetails.component";
+import tasksStore from "stores/tasksStore";
 import styled from "styled-components";
 
 const PageWrapper = styled.div`

@@ -1,8 +1,8 @@
 import React from "react";
-import Months from "./months";
-import DaysOfWeek from "./daysOfWeek";
+import Months from "components/calendar/months";
+import DaysOfWeek from "components/calendar/daysOfWeek";
 import styled from "styled-components";
-import CalendarControls from "./calendarControls";
+import CalendarControls from "components/calendar/calendarControls";
 
 const CalendarPane = styled.div`
   background: #f5f6f7;

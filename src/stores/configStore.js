@@ -1,8 +1,8 @@
 import { store } from "react-easy-state";
-import gapiREST from "../utils/gapiREST.js";
+import gapiREST from "utils/gapiREST.js";
 
-import listsStore from "./listsStore";
-import tasksStore from "./tasksStore";
+import listsStore from "stores/listsStore";
+import tasksStore from "stores/tasksStore";
 
 import uniqid from "uniqid";
 
