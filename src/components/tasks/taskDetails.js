@@ -4,6 +4,8 @@ import { view } from "react-easy-state";
 import SimpleMDEReact from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import styled from "styled-components";
+import { format } from "date-fns";
+import { deLocale } from "date-fns/locale/de";
 
 const DetailsPane = styled.div`
   background: #f5f6f7;
@@ -25,7 +27,10 @@ const Header = styled.div`
   box-sizing: border-box;
 `;
 
-const DateDisplay = styled.span``;
+const DateDisplay = styled.span`
+  font-size: 16px;
+  margin-right: 12px;
+`;
 
 const DetailsTitle = styled.div`
   font-size: 24px;
@@ -51,12 +56,6 @@ const EditorWrapper = styled.div`
 //   box-sizing: border-box;
 // `;
 
-const beautifyDate = dateString => {
-  const dateTime = new Date(dateString);
-  return `${dateTime.getDate()}/${dateTime.getMonth() +
-    1}/${dateTime.getFullYear()}`;
-};
-
 const TaskDetails = props => {
   const [task, setTask] = useState(props.task);
   // const task = tasksStore.selectedTask;
@@ -71,7 +70,10 @@ const TaskDetails = props => {
       <Header>
         <DetailsTitle>{task.title}</DetailsTitle>
         <DateDisplay>
-          Due: {task.due ? beautifyDate(task.due) : "-- -- ----"}
+          Due:
+          {task.due
+            ? format(task.due, " Do MMM[.] YYYY", { locale: deLocale })
+            : " -- -- ----"}
         </DateDisplay>
       </Header>
       <EditorWrapper>

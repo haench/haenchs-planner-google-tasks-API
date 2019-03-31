@@ -2,9 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "components/app";
 import { ThemeProvider } from "styled-components";
-import "index.css";
 import * as serviceWorker from "serviceWorker";
-
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -39,7 +37,8 @@ const colors = {
   darkgrey: "#333e45",
   lightgrey: "#f5f6f7",
   borderlight: "#e4e7eb",
-  borderdark: "#475760"
+  borderdark: "#475760",
+  nearlywhite: "#fdfdfd"
 };
 
 const theme = {
@@ -47,7 +46,8 @@ const theme = {
   lightgrey: colors.lightgrey,
   darkgrey: colors.darkgrey,
   borderlight: colors.borderlight,
-  borderdark: colors.borderdark
+  borderdark: colors.borderdark,
+  whitetext: colors.nearlywhite
 };
 
 ReactDOM.render(

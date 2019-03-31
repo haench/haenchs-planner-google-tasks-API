@@ -8,6 +8,7 @@ import { DebounceInput } from "react-debounce-input";
 import DeleteButton from "components/styled.components/deleteButton";
 import { format } from "date-fns";
 import { deLocale } from "date-fns/locale/de";
+import Pill from "components/styled.components/pill";
 
 const LiTask = styled.div`
   display: flex;
@@ -51,11 +52,6 @@ const LiTask = styled.div`
   }
 `;
 
-const DueDate = styled.span`
-  font-size: 13.333px;
-  margin-right: 12px;
-`;
-
 const Task = props => {
   const task = props.task;
   const isSelected = tasksStore.selectedTaskId === task.id;
@@ -92,11 +88,11 @@ const Task = props => {
         autoFocus={isSelected}
         key={isSelected}
       />
-      <DueDate>
+      <Pill>
         {task.due
           ? format(task.due, "Do MMM[.] YYYY", { locale: deLocale })
           : ""}
-      </DueDate>
+      </Pill>
       <DeleteButton
         onClick={() => tasksStore.deleteTask(task)}
         defaultHidden

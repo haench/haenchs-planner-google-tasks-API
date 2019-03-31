@@ -6,7 +6,7 @@ const Pill = styled.span`
   font-size: 12px;
   line-height: 20px;
   text-align: center;
-
+  color: ${props => props.theme.whitetext};
   background-color: ${props => props.theme.highlight};
   border-radius: 10px;
   margin-left: auto;
