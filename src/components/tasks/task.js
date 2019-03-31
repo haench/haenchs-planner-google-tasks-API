@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Checkbox from "components/styled.components/checkbox";
 import { DebounceInput } from "react-debounce-input";
 import DeleteButton from "components/styled.components/deleteButton";
+import { format } from "date-fns";
+import { deLocale } from "date-fns/locale/de";
 
 const LiTask = styled.div`
   display: flex;
@@ -27,7 +29,7 @@ const LiTask = styled.div`
     background: #e4e7eb;
   }
   &:hover ${DeleteButton} {
-    display: flex;
+    visibility: visible;
     margin-left: auto;
   }
   &:hover input {
@@ -47,6 +49,11 @@ const LiTask = styled.div`
     font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
       -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   }
+`;
+
+const DueDate = styled.span`
+  font-size: 13.333px;
+  margin-right: 12px;
 `;
 
 const Task = props => {
@@ -85,9 +92,14 @@ const Task = props => {
         autoFocus={isSelected}
         key={isSelected}
       />
+      <DueDate>
+        {task.due
+          ? format(task.due, "Do MMM[.] YYYY", { locale: deLocale })
+          : ""}
+      </DueDate>
       <DeleteButton
         onClick={() => tasksStore.deleteTask(task)}
-        hidden
+        defaultHidden
         color={"#777"}
         size="24"
       />

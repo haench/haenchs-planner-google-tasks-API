@@ -3,8 +3,35 @@ import ReactDOM from "react-dom";
 import App from "components/app";
 import { ThemeProvider } from "styled-components";
 import "index.css";
-// import { Normalize } from "styled-normalize";
 import * as serviceWorker from "serviceWorker";
+
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Wichtig damit beim skalieren von DIVs deren padding/border berücksichtigt werden. */
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
+    -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  /* font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-variant-ligatures: common-ligatures; */
+  color: rgba(0, 0, 0, 0.75);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f6f7;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+`;
 
 const colors = {
   blue: "#1070ca",
@@ -25,7 +52,7 @@ const theme = {
 
 ReactDOM.render(
   <React.Fragment>
-    {/* <Normalize /> */}
+    <GlobalStyle />
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
