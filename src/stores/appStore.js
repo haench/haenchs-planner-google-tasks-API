@@ -26,7 +26,7 @@ const appStore = store({
     await appStore.loadTasksData();
     await appStore.loadCalendarData();
 
-    appStore.appState = "calendar";
+    appStore.appState = "tasks";
     // Hide loader here
   },
 
