@@ -13,8 +13,8 @@
    id="svg5078"
    sodipodi:docname="logo.svg"
    inkscape:export-filename="F:\dev\haenchs-planner\public\manifest.png"
-   inkscape:export-xdpi="512"
-   inkscape:export-ydpi="512"
+   inkscape:export-xdpi="1024"
+   inkscape:export-ydpi="1024"
    inkscape:version="0.92.0 r15299">
   <metadata
      id="metadata5082">
@@ -36,15 +36,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1485"
-     inkscape:window-height="885"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      id="namedview5080"
      showgrid="false"
      inkscape:zoom="4.9166667"
      inkscape:cx="24"
      inkscape:cy="24"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg5078" />
   <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
@@ -56,17 +56,6 @@
          stdDeviation="0"
          in="SourceGraphic"
          id="feGaussianBlur5064" />
-    </filter>
-    <filter
-       height="200%"
-       width="200%"
-       y="-50%"
-       x="-50%"
-       id="svg_2_blur">
-      <feGaussianBlur
-         stdDeviation="0"
-         in="SourceGraphic"
-         id="feGaussianBlur5067" />
     </filter>
   </defs>
   <g
