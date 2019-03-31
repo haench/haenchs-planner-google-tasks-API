@@ -11,36 +11,8 @@ import WelcomePage from "./welcome.component";
 import { Calendar } from "./calendar";
 import CalendarNav from "./calendar/calendarNav";
 
-const HApp = styled.div`
-  height: 100vh;
-  display: flex;
-`;
-
-const TasksPage = view(() => {
-  return (
-    <HApp>
-      {/* <Navigation /> */}
-      <TaskLists />
-      <Tasks />
-      {tasksStore.selectedTask ? (
-        <TaskDetails task={tasksStore.selectedTask} />
-      ) : null}
-    </HApp>
-  );
-});
-
-const CalendarPage = view(() => {
-  return (
-    <HApp>
-      <CalendarNav />
-      <Calendar
-        showDaysOfWeek={true}
-        showWeekSeparators={false}
-        firstDayOfWeek={1}
-      />
-    </HApp>
-  );
-});
+import TasksPage from "./tasks/tasksPage.component";
+import CalendarPage from "./calendar/calendarPage.component";
 
 const App = () => {
   console.log(React.version, appStore.appState);

@@ -1,8 +1,8 @@
 import React from "react";
 import { view } from "react-easy-state";
 import styled from "styled-components";
-import { Calendar } from "./calendar";
-import CalendarNav from "./calendar/calendarNav";
+import Calendar from "./calendar";
+import CalendarNav from "./calendarNav";
 
 const PageWrapper = styled.div`
   height: 100vh;
