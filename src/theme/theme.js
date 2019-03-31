@@ -1,16 +1,20 @@
-"use strict";
-
-import { paletteBlueGrey } from "./constants";
-
-export default {
-  reactackleDemo: {
-    paletteBlueGrey,
-
-    color: {
-      blue: "#2196f3",
-      darkblue: "#3c5da1",
-      purple: "#6a22f3",
-      yellow: "#ffc004"
-    }
-  }
+const colors = {
+  blue: "#1070ca",
+  red: "#E75546",
+  darkgrey: "#333e45",
+  lightgrey: "#f5f6f7",
+  borderlight: "#e4e7eb",
+  borderdark: "#475760",
+  nearlywhite: "#fdfdfd"
 };
+
+const theme = {
+  highlight: colors.blue,
+  lightgrey: colors.lightgrey,
+  darkgrey: colors.darkgrey,
+  borderlight: colors.borderlight,
+  borderdark: colors.borderdark,
+  whitetext: colors.nearlywhite
+};
+
+export default theme;
