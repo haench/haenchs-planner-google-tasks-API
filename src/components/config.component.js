@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Modal from "react-responsive-modal";
-import configStore from "./../stores/configStore";
-import listsStore from "./../stores/listsStore";
+import configStore from "stores/configStore";
+import listsStore from "stores/listsStore";
 import { store, view } from "react-easy-state";
-import Button from "./Button.styled";
-import Input from "./input.styled";
+import Button from "components/styled.components/button";
+import Input from "components/styled.components/input";
 
 const Descrition = styled.span`
   font-size: 14px;

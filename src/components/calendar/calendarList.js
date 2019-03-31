@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { view } from "react-easy-state";
-import eventStore from "../../stores/eventStore";
-import Filledbox from "./../filledbox";
+import eventStore from "stores/eventStore";
+import Filledbox from "components/styled.components/filledbox";
 import useCollapse from "react-collapsed";
 import { List as CalList } from "styled-icons/feather/List";
 

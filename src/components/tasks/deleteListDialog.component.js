@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-responsive-modal";
 import { view } from "react-easy-state";
-import Button from "./Button.styled";
+import Button from "components/styled.components/button";
 
 const DeleteListDialog = ({
   isOpen,

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { view } from "react-easy-state";
-import tasksStore from "../../stores/tasksStore";
-import listsStore from "../../stores/listsStore";
-import DeleteButton from "./deleteButton";
-import EditButton from "./editButton";
+import tasksStore from "stores/tasksStore";
+import listsStore from "stores/listsStore";
+import DeleteButton from "components/styled.components/deleteButton";
+import EditButton from "components/styled.components/editButton";
 
-import Pill from "./pill.styled";
+import Pill from "components/styled.components/pill";
 import DeleteListDialog from "./deleteListDialog.component";
 
 const ButtonGroup = styled.div`

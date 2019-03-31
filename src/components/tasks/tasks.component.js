@@ -1,17 +1,17 @@
 import React from "react";
-import tasksStore from "../../stores/tasksStore";
-import listsStore from "../../stores/listsStore";
+import tasksStore from "stores/tasksStore";
+import listsStore from "stores/listsStore";
 import { view } from "react-easy-state";
-import Task from "./task.component";
+import Task from "components/tasks/task.component";
 import { SortableContainer } from "react-sortable-hoc";
-import TaskForm from "./taskForm.component";
+import TaskForm from "components/tasks/taskForm.component";
 import arrayMove from "array-move";
 import styled from "styled-components";
 
 // import "../toggle_style.css";
 import { ToggleLeft } from "styled-icons/feather/ToggleLeft";
 import { ToggleRight } from "styled-icons/feather/ToggleRight";
-import Button from "components/styled.components/Button.styled";
+import Button from "components/styled.components/button";
 
 const MyToggle = props => {
   return (
