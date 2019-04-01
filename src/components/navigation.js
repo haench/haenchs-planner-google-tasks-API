@@ -16,23 +16,53 @@ import ConfigDialog from "components/config";
 import AboutPopup from "components/about";
 
 const LogoutIcon = styled(LogOutIconBase)`
-  color: #fdfdfd;
+  margin: 4px;
+  border-radius: 2px;
+  color: ${props => props.theme.whitetext};
+  background: ${props => (props.isSelected ? props.theme.highlight : "none")};
+  :hover {
+    color: ${props => props.theme.highlight};
+  }
 `;
 
 const TasksIcon = styled(TasksIconBase)`
-  color: #fdfdfd;
+  margin: 4px;
+  border-radius: 2px;
+  color: ${props => props.theme.whitetext};
+  background: ${props => (props.isSelected ? props.theme.highlight : "none")};
+  :hover {
+    color: ${props => props.theme.highlight};
+  }
 `;
 
 const CalendarIcon = styled(CalendarIconBase)`
-  color: #fdfdfd;
+  margin: 4px;
+  border-radius: 2px;
+  color: ${props => props.theme.whitetext};
+  background: ${props => (props.isSelected ? props.theme.highlight : "none")};
+  :hover {
+    color: ${props => props.theme.highlight};
+  }
 `;
 
-const SettingsIcon = styled(SettingsIconBase)`
-  color: #fdfdfd;
+const ConfigIcon = styled(SettingsIconBase)`
+  margin: 4px;
+  border-radius: 2px;
+  color: ${props => props.theme.whitetext};
+  background: ${props => (props.isSelected ? props.theme.highlight : "none")};
+  :hover {
+    color: ${props => props.theme.highlight};
+  }
 `;
 
 const HelpCircle = styled(HelpCircleBase)`
-  color: #fdfdfd;
+  margin: 4px;
+  border-radius: 2px;
+  color: ${props => props.theme.whitetext};
+  background: ${props => (props.isSelected ? props.theme.highlight : "none")};
+  :hover {
+    color: ${props => props.theme.highlight};
+  }
 `;
 
 const NavigationPane = styled.div`
@@ -66,18 +96,21 @@ const Navigation = props => {
       <NavigationPane>
         <CalendarIcon
           size="32"
+          isSelected={appStore.appState === "calendar"}
           onClick={() => {
             appStore.appState = "calendar";
           }}
         />
         <TasksIcon
           size="32"
+          isSelected={appStore.appState === "tasks"}
           onClick={() => {
             appStore.appState = "tasks";
           }}
         />
         <HelpCircle
           size="32"
+          isSelected={appStore.isAboutOpen}
           onClick={() => {
             appStore.isAboutOpen = true;
           }}
@@ -88,8 +121,9 @@ const Navigation = props => {
             appStore.isAboutOpen = false;
           }}
         />
-        <SettingsIcon
+        <ConfigIcon
           size="32"
+          isSelected={appStore.isConfigOpen}
           onClick={() => {
             appStore.isConfigOpen = true;
           }}
@@ -103,7 +137,7 @@ const Navigation = props => {
         <GoogleLogout
           buttonText=""
           icon={false}
-          onLogoutSuccess={() => console.log("logged out")}
+          onLogoutSuccess={() => (appStore.appState = "auth")}
           render={renderProps => (
             <LogoutIcon size="32" onClick={renderProps.onClick} />
           )}

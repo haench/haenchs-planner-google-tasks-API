@@ -49,7 +49,11 @@ const Months = ({ showWeekSeparators, firstDayOfWeek, ...props }) => {
     eventStore.daysWithEvents.forEach((day, index, arr) => {
       if (day.isFirstDayOfMonth) {
         daysInMonth = getDaysInMonth(day.date);
-        days.push(<MonthName>{format(day.date, "MMM")}</MonthName>);
+        days.push(
+          <MonthName key={`monthname-${index}`}>
+            {format(day.date, "MMM")}
+          </MonthName>
+        );
         if (showWeekSeparators)
           days.push(
             <WeekSeperator key={`seperator-${index}`}>

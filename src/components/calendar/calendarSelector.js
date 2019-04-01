@@ -64,8 +64,8 @@ const CalendarSelector = () => {
   return (
     <React.Fragment>
       <List {...getCollapseProps()}>
-        {eventStore.calendarList.map(cal => (
-          <Item>
+        {eventStore.calendarList.map((cal, index) => (
+          <Item key={index}>
             <Filledbox checked={cal.selected} color={cal.backgroundColor} />
 
             <Title>{cal.summary}</Title>

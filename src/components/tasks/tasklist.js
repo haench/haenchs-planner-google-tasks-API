@@ -5,7 +5,6 @@ import tasksStore from "stores/tasksStore";
 import listsStore from "stores/listsStore";
 import DeleteButton from "components/styled.components/deleteButton";
 import EditButton from "components/styled.components/editButton";
-
 import Pill from "components/styled.components/pill";
 import DeleteListDialog from "components/tasks/deleteListDialog";
 
@@ -25,6 +24,7 @@ const List = styled.div`
   :hover {
     background: ${props => props.theme.highlight};
   }
+
   &:hover ${Pill} {
     display: none;
   }
@@ -58,20 +58,21 @@ const TaskListTitle = styled.div`
 `;
 
 const TaskRename = view(({ list, onClose, ...props }) => {
+  const updateList = event => {
+    listsStore.updateTaskList(list);
+    onClose();
+    event.preventDefault();
+  };
+
   return (
-    <form
-      onSubmit={event => {
-        listsStore.updateTaskList(list);
-        onClose();
-        event.preventDefault();
-      }}
-    >
+    <form onSubmit={updateList}>
       <input
         type="text"
         value={list.title}
         onChange={event => {
           listsStore.setList({ ...list, title: event.target.value });
         }}
+        onBlur={updateList}
       />
     </form>
   );

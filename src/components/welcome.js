@@ -14,7 +14,6 @@ const Welcome = styled.div`
 `;
 
 Welcome.Container = styled.div`
-  height: 30%;
   width: 30%;
   background: ${props => props.theme.darkgrey};
   color: #fdfdfd;
@@ -34,6 +33,7 @@ Welcome.Text = styled.div`
 `;
 
 Welcome.Login = styled.div`
+  margin-top: 12px;
   flex: 1;
   display: flex;
   align-items: center;
@@ -54,6 +54,7 @@ const WelcomePage = () => {
           on mobile.
           <br />
           <br /> You need to login with a google account to see all the beauty.
+          <br />
         </Welcome.Text>
         <Welcome.Login>
           <GoogleLogin

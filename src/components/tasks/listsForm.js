@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { view } from "react-easy-state";
-import { PlaylistAdd as Add } from "styled-icons/material/PlaylistAdd";
+import { Plus as PlusBase } from "styled-icons/feather/Plus";
 // from: https://codesandbox.io/s/github/yazeedb/react-hooks-todo
+
+const AddIcon = styled(PlusBase)`
+  color: #fdfdfd;
+`;
 
 const Form = styled.form`
   display: flex;
@@ -57,7 +61,7 @@ const ListsForm = ({ saveTodo, placeholder }) => {
       />
       <label>
         <input type="submit" style={{ display: "none" }} />
-        <Add style={{ height: "28" }} />
+        <AddIcon size="24" />
       </label>
     </Form>
   );
