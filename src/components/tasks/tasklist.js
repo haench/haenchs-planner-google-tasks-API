@@ -19,6 +19,7 @@ const List = styled.div`
   line-height: 36px;
   height: 36px;
   overflow: hidden;
+  white-space: nowrap;
   cursor: default;
   scroll-snap-align: start;
   :hover {

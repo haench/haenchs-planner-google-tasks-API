@@ -65,6 +65,11 @@ const TaskDetails = props => {
     setTask(props.task);
   }, [props.task]);
 
+  const getInstance = instance => {
+    // You can now store and manipulate the simplemde instance.
+    instance.togglePreview();
+  };
+
   return (
     <DetailsPane>
       <Header>
@@ -79,6 +84,7 @@ const TaskDetails = props => {
       <EditorWrapper>
         <SimpleMDEReact
           key={task.id}
+          getMdeInstance={getInstance}
           value={task.notes}
           onChange={value => {
             setTask({ ...task, notes: value });
