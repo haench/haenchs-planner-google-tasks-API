@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/haenchs-planner/static/js/runtime~main.60ee73d5.js"
   },
   {
-    "revision": "3e95035c223699951d31",
-    "url": "/haenchs-planner/static/js/main.787c4900.chunk.js"
+    "revision": "13ecc3cf1fed990f3ee3",
+    "url": "/haenchs-planner/static/js/main.05bddc70.chunk.js"
   },
   {
     "revision": "4a1f974c99204c5cb0c1",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/haenchs-planner/static/css/2.b1095fe2.chunk.css"
   },
   {
-    "revision": "081d1033ec95925bad6c5b52b77ce6a6",
+    "revision": "07f3cf808489d48b529852d967053c4b",
     "url": "/haenchs-planner/index.html"
   }
 ];
