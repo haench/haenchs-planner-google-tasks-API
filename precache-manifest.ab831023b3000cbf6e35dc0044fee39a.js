@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/haenchs-planner/static/css/2.b1095fe2.chunk.css"
   },
   {
-    "revision": "07f3cf808489d48b529852d967053c4b",
+    "revision": "9cc9898bdb34bc006aee6a6a89b9ce37",
     "url": "/haenchs-planner/index.html"
   }
 ];
