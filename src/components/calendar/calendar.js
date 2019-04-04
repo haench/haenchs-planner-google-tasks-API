@@ -4,10 +4,7 @@ import Months from "components/calendar/months";
 import DaysOfWeek from "components/calendar/daysOfWeek";
 import styled from "styled-components";
 import CalendarControls from "components/calendar/calendarControls";
-import BigCalendar from "react-big-calendar";
-import moment from "moment";
 import eventStore from "stores/eventStore";
-import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
