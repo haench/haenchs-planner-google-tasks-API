@@ -54,6 +54,10 @@ const eventStore = store({
                 parse(entry.end.dateTime || entry.end.date),
                 parse(entry.start.dateTime || entry.start.date)
               ),
+              allday: !!differenceInCalendarDays(
+                parse(entry.end.dateTime || entry.end.date),
+                parse(entry.start.dateTime || entry.start.date)
+              ),
               url: entry.htmlLink,
               location: entry.location,
               description: entry.description,
@@ -83,6 +87,7 @@ const eventStore = store({
     }));
 
     eventStore.events.forEach(event => {
+      console.log(event.daySpan);
       let insertIndex;
       eachDay(event.start, event.end).forEach((eventDay, index, array) => {
         const calDay = days.find(_day => isSameDay(_day.date, eventDay));
