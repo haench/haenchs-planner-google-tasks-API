@@ -8,16 +8,6 @@ import Navigation from "components/navigation";
 
 import TaskList from "components/tasks/tasklist";
 
-const ListsPane = styled.div`
-  background: ${props => props.theme.darkgrey};
-  color: #fdfdfd;
-  border-right: 1px solid #475760;
-  flex: 0 0 256px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-`;
-
 const GroupTitle = styled.div`
   margin: 10px 5px 5px 5px;
   font-weight: 500;
@@ -56,10 +46,10 @@ const TaskLists = () => {
   const lists = listsStore.lists.filter(
     list => list.id !== configStore.configListId
   );
-  // console.log(groups, lists, tasks);
+
   return (
-    <ListsPane>
-      <Navigation />
+    <>
+      {/* <Navigation /> */}
       <ListOfGroups>
         {groups.map(group => (
           <div key={group.id}>
@@ -82,7 +72,7 @@ const TaskLists = () => {
         saveTodo={title => listsStore.insertTaskList(title)}
         placeholder="Add list..."
       />
-    </ListsPane>
+    </>
   );
 };
 

@@ -7,15 +7,6 @@ import styled from "styled-components";
 import { format } from "date-fns";
 import { deLocale } from "date-fns/locale/de";
 
-const DetailsPane = styled.div`
-  background: #f5f6f7;
-  border-right: 1px solid #e4e7eb;
-  flex: 1 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-`;
-
 const Header = styled.div`
   flex: 0 0 80px;
   background: #fff;
@@ -71,7 +62,7 @@ const TaskDetails = props => {
   };
 
   return (
-    <DetailsPane>
+    <>
       <Header>
         <DetailsTitle>{task.title}</DetailsTitle>
         <DateDisplay>
@@ -104,7 +95,7 @@ const TaskDetails = props => {
         />
       </EditorWrapper>
       {/* <Footer /> */}
-    </DetailsPane>
+    </>
   );
 };
 

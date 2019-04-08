@@ -4,22 +4,31 @@ import TaskLists from "components/tasks/tasklists";
 import Tasks from "components/tasks/tasks";
 import TaskDetails from "components/tasks/taskDetails";
 import tasksStore from "stores/tasksStore";
-import styled from "styled-components";
-
-const PageWrapper = styled.div`
-  height: 100vh;
-  display: flex;
-`;
+import Navigation from "components/navigation_vertical";
+import {
+  PageWrapper,
+  NavPane,
+  FixedPane,
+  FlexPane
+} from "components/pageLayout";
 
 const TasksPage = view(() => {
   return (
     <PageWrapper>
-      {/* <Navigation /> */}
-      <TaskLists />
-      <Tasks />
-      {tasksStore.selectedTask ? (
-        <TaskDetails task={tasksStore.selectedTask} />
-      ) : null}
+      <NavPane>
+        <Navigation />
+      </NavPane>
+      <FixedPane>
+        <TaskLists />
+      </FixedPane>
+      <FlexPane>
+        <Tasks />
+      </FlexPane>
+      <FlexPane>
+        {tasksStore.selectedTask ? (
+          <TaskDetails task={tasksStore.selectedTask} />
+        ) : null}
+      </FlexPane>
     </PageWrapper>
   );
 });
