@@ -20,6 +20,7 @@
     "react-scripts": "2.1.8",
     "react-simplemde-editor": "^4.0.0",
     "react-sortable-hoc": "^1.8.3",
+    "react-spinners": "^0.5.4",
     "styled-components": "^4.2.0",
     "styled-icons": "^7.7.0",
     "styled-normalize": "^8.0.6",

@@ -3,7 +3,14 @@ import { view } from "react-easy-state";
 import config from "config";
 import { GoogleLogin } from "react-google-login";
 import appStore from "stores/appStore";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { ScaleLoader } from "react-spinners";
+
+const override = css`
+  display: flex;
+  margin: 10px 4px;
+  justify-content: center;
+`;
 
 const Welcome = styled.div`
   height: 100vh;
@@ -57,17 +64,30 @@ const WelcomePage = () => {
           <br />
         </Welcome.Text>
         <Welcome.Login>
-          <GoogleLogin
-            clientId={config.clientId}
-            scope="https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/calendar"
-            onSuccess={response => appStore.init(response)}
-            // onSuccess={response => console.log("login")}
-            onFailure={response => console.log("onFailure", response)}
-            onRequest={response => console.log("onRequest", response)}
-            isSignedIn={true}
-            // buttonText="Login"
-            theme="dark"
-          />
+          {appStore.loadingData ? (
+            <span style={{ display: "flex", alignItems: "center" }}>
+              <ScaleLoader
+                css={override}
+                sizeUnit={"em"}
+                size={1}
+                color={"#1070ca"}
+                loading={true}
+              />
+              Loading ...
+            </span>
+          ) : (
+            <GoogleLogin
+              clientId={config.clientId}
+              scope="https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/calendar"
+              onSuccess={response => appStore.init(response)}
+              // onSuccess={response => console.log("login")}
+              onFailure={response => console.log("onFailure", response)}
+              onRequest={response => console.log("onRequest", response)}
+              isSignedIn={true}
+              // buttonText="Login"
+              theme="dark"
+            />
+          )}
         </Welcome.Login>
       </Welcome.Container>
     </Welcome>

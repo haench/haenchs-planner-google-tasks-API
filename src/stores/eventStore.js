@@ -22,7 +22,7 @@ const eventStore = store({
 
   async fetchCalendars() {
     eventStore.calendarList = await gCalApi.listCalendars();
-    console.log(eventStore.calendarList);
+    // console.log(eventStore.calendarList);
   },
 
   async fetchEvents() {
@@ -70,7 +70,7 @@ const eventStore = store({
   },
 
   buildYear() {
-    console.time("concatenation");
+    // console.time("concatenation");
 
     var days = eachDay(
       eventStore.startOfCalendar,
@@ -87,7 +87,7 @@ const eventStore = store({
     }));
 
     eventStore.events.forEach(event => {
-      console.log(event.daySpan);
+      // console.log(event.daySpan);
       let insertIndex;
       eachDay(event.start, event.end).forEach((eventDay, index, array) => {
         const calDay = days.find(_day => isSameDay(_day.date, eventDay));
@@ -113,9 +113,9 @@ const eventStore = store({
       });
     });
     eventStore.daysWithEvents = days;
-    console.timeEnd("concatenation");
-    console.log("events:", eventStore.events);
-    console.log("days: ", eventStore.daysWithEvents);
+    // console.timeEnd("concatenation");
+    // console.log("events:", eventStore.events);
+    // console.log("days: ", eventStore.daysWithEvents);
   }
 });
 
