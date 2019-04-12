@@ -5,19 +5,12 @@ import Tasks from "components/tasks/tasks";
 import TaskDetails from "components/tasks/taskDetails";
 import tasksStore from "stores/tasksStore";
 import Navigation from "components/navigation_vertical";
-import {
-  PageWrapper,
-  NavPane,
-  FixedPane,
-  FlexPane
-} from "components/pageLayout";
+import { PageWrapper, FixedPane, FlexPane } from "components/pageLayout";
 
 const TasksPage = view(() => {
   return (
     <PageWrapper>
-      <NavPane>
-        <Navigation />
-      </NavPane>
+      <Navigation />
       <FixedPane>
         <TaskLists />
       </FixedPane>

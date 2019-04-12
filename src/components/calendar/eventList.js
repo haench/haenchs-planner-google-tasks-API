@@ -26,6 +26,8 @@ const SnappingList = styled.div`
 `;
 
 const DayHeader = styled.div`
+  font-size: 14px;
+  font-weight: 400;
   font-variant: small-caps;
   padding-left: 8px;
   background: ${props => props.theme.darkgrey};
@@ -38,6 +40,8 @@ const DayHeader = styled.div`
 const Events = styled.div``;
 
 const Event = styled.div`
+  font-size: 14px;
+  font-weight: 400;
   padding-left: 8px;
   height: 32px;
   display: flex;

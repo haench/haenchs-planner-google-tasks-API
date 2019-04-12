@@ -1,23 +1,18 @@
 import React from "react";
 import { view } from "react-easy-state";
 import Calendar from "components/calendar/calendar";
-import CalendarNav from "components/calendar/calendarNav";
 import Navigation from "components/navigation_vertical";
-import {
-  PageWrapper,
-  NavPane,
-  FixedPane,
-  FlexPane
-} from "components/pageLayout";
+import { PageWrapper, FixedPane, FlexPane } from "components/pageLayout";
+import EventList from "components/calendar/eventList";
+import CalendarSelector from "components/calendar/calendarSelector";
 
 const CalendarPage = view(() => {
   return (
     <PageWrapper>
-      <NavPane>
-        <Navigation />
-      </NavPane>
+      <Navigation />
       <FixedPane>
-        <CalendarNav />
+        <EventList />
+        <CalendarSelector />
       </FixedPane>
       <FlexPane>
         <Calendar
