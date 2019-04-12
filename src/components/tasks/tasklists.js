@@ -4,7 +4,7 @@ import listsStore from "stores/listsStore";
 import { view } from "react-easy-state";
 import ListsForm from "components/tasks/listsForm";
 import styled from "styled-components";
-import Navigation from "components/navigation";
+// import Navigation from "components/navigation";
 
 import TaskList from "components/tasks/tasklist";
 

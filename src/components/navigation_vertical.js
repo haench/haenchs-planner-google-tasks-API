@@ -5,7 +5,7 @@ import { GoogleLogout } from "react-google-login";
 
 import appStore from "stores/appStore";
 
-import { Google as GoogleIcon } from "styled-icons/boxicons-logos/Google";
+// import { Google as GoogleIcon } from "styled-icons/boxicons-logos/Google";
 import { LogOut as LogOutIconBase } from "styled-icons/feather/LogOut";
 import { CheckSquare as TasksIconBase } from "styled-icons/feather/CheckSquare";
 import { Calendar as CalendarIconBase } from "styled-icons/feather/Calendar";
@@ -65,13 +65,13 @@ const HelpCircle = styled(HelpCircleBase)`
   }
 `;
 
-const NavigationPane = styled.div`
-  background: ${props => props.theme.darkgrey};
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  border-bottom: 1px solid #475760;
-`;
+// const NavigationPane = styled.div`
+//   background: ${props => props.theme.darkgrey};
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   border-bottom: 1px solid #475760;
+// `;
 
 const Navigation = props => {
   return (
