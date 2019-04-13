@@ -11,6 +11,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
+import "components/calendar/fc_finetuning.css";
 
 const CalendarPane = styled.div`
   background: #f5f6f7;
@@ -55,9 +56,12 @@ const CalendarBody = styled.tbody`
 const Calendar = props => (
   <CalendarPane>
     <FullCalendar
-      defaultView="dayGridMonth"
+      defaultView={"dayGridMonth"}
       plugins={[dayGridPlugin]}
       events={eventStore.events}
+      weekNumberCalculation={"iso"}
+      firstDay={1}
+      showNonCurrentDates={false}
     />
   </CalendarPane>
 );
