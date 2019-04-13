@@ -1,23 +1,26 @@
 import React from "react";
 import { view } from "react-easy-state";
-import styled from "styled-components";
 import Calendar from "components/calendar/calendar";
-import CalendarNav from "components/calendar/calendarNav";
-
-const PageWrapper = styled.div`
-  height: 100vh;
-  display: flex;
-`;
+import Navigation from "components/navigation_vertical";
+import { PageWrapper, FixedPane, FlexPane } from "components/pageLayout";
+import EventList from "components/calendar/eventList";
+import CalendarSelector from "components/calendar/calendarSelector";
 
 const CalendarPage = view(() => {
   return (
     <PageWrapper>
-      <CalendarNav />
-      <Calendar
-        showDaysOfWeek={true}
-        showWeekSeparators={false}
-        firstDayOfWeek={1}
-      />
+      <Navigation />
+      <FixedPane>
+        <EventList />
+        <CalendarSelector />
+      </FixedPane>
+      <FlexPane>
+        <Calendar
+          showDaysOfWeek={true}
+          showWeekSeparators={false}
+          firstDayOfWeek={1}
+        />
+      </FlexPane>
     </PageWrapper>
   );
 });

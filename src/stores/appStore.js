@@ -13,21 +13,18 @@ const appStore = store({
   isLoggedIn: false,
   isConfigOpen: false,
   isAboutOpen: false,
+  loadingData: false,
 
   async init(response) {
-    // Show loader here
-    console.log("Init gapi", response);
-    // Load Calendar Client globally once and fall all!?
+    appStore.loadingData = true;
+    // console.log("Init gapi", response);
     await window.gapi.client.load("calendar", "v3");
-    // Store user data
     appStore.user = response.profileObj;
     appStore.userImage = response.profileObj.imageURL;
     appStore.isLoggedIn = true;
-    await appStore.loadTasksData();
-    await appStore.loadCalendarData();
-
+    await Promise.all([appStore.loadTasksData(), appStore.loadCalendarData()]);
     appStore.appState = "tasks";
-    // Hide loader here
+    appStore.loadingData = false;
   },
 
   async loadTasksData() {
@@ -38,9 +35,9 @@ const appStore = store({
 
   async loadCalendarData() {
     await eventStore.fetchCalendars();
-    console.log(eventStore.calendarList);
+    // console.log(eventStore.calendarList);
     await eventStore.fetchEvents();
-    console.log(eventStore.events);
+    // console.log(eventStore.events);
     eventStore.buildYear();
   }
 });

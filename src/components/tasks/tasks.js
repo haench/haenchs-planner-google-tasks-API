@@ -11,54 +11,10 @@ import { ToggleLeft } from "styled-icons/feather/ToggleLeft";
 import { ToggleRight } from "styled-icons/feather/ToggleRight";
 import Button from "components/styled.components/button";
 
-const MyToggle = props => {
-  return (
-    <div onClick={props.onClick} style={{ margin: "4px" }}>
-      {props.defaultChecked ? (
-        <ToggleRight size="24" style={{ verticalAlign: "middle" }} />
-      ) : (
-        <ToggleLeft size="24" style={{ verticalAlign: "middle" }} />
-      )}
-      <span
-        style={{
-          marginLeft: "4px",
-          height: "24",
-          fontSize: "12px",
-          verticalAlign: "center"
-        }}
-      >
-        {props.label}
-      </span>
-    </div>
-  );
-};
-
-const TasksPane = styled.div`
-  background: #f5f6f7;
-  border-right: 1px solid #e4e7eb;
-  flex: 1 1;
-  max-width: 50%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-`;
-
 const ListOfTasks = styled.div`
   overflow-y: auto;
   flex: 1;
 `;
-
-const SortableList = view(
-  SortableContainer(({ tasks }) => {
-    return (
-      <ListOfTasks>
-        {tasks.map((task, index) => (
-          <Task key={task.id} index={index} task={task} />
-        ))}
-      </ListOfTasks>
-    );
-  })
-);
 
 const Header = styled.div`
   flex: 0 0 80px;
@@ -88,6 +44,40 @@ const ListTitle = styled.div`
   font-weight: bold;
 `;
 
+const MyToggle = props => {
+  return (
+    <div onClick={props.onClick} style={{ margin: "4px" }}>
+      {props.defaultChecked ? (
+        <ToggleRight size="24" style={{ verticalAlign: "middle" }} />
+      ) : (
+        <ToggleLeft size="24" style={{ verticalAlign: "middle" }} />
+      )}
+      <span
+        style={{
+          marginLeft: "4px",
+          height: "24",
+          fontSize: "12px",
+          verticalAlign: "center"
+        }}
+      >
+        {props.label}
+      </span>
+    </div>
+  );
+};
+
+const SortableList = view(
+  SortableContainer(({ tasks }) => {
+    return (
+      <ListOfTasks>
+        {tasks.map((task, index) => (
+          <Task key={task.id} index={index} task={task} />
+        ))}
+      </ListOfTasks>
+    );
+  })
+);
+
 const Tasks = () => {
   const list = listsStore.currentList;
   if (!list) return null;
@@ -116,7 +106,7 @@ const Tasks = () => {
   };
 
   return (
-    <TasksPane>
+    <>
       <Header>
         <ListTitle>{list.shortTitle}</ListTitle>
       </Header>
@@ -146,7 +136,7 @@ const Tasks = () => {
         <div style={{ flex: "1" }} />
         <Button onClick={() => tasksStore.clearTasks()}>Clear completed</Button>
       </Footer>
-    </TasksPane>
+    </>
   );
 };
 

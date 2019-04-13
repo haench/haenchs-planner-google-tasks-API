@@ -19,7 +19,7 @@ const tasksStore = store({
 
   setTask(task) {
     // Does Update or Insert
-    console.log("setTask");
+    // console.log("setTask");
     const index = tasksStore.tasks.findIndex(_task => _task.id === task.id);
     if (index === -1) tasksStore.tasks.push(task);
     else tasksStore.tasks[index] = task;
