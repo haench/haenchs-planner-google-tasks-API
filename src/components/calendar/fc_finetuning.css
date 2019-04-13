@@ -1,0 +1,21 @@
+.fc {
+  background: #fff;
+}
+
+.fc-toolbar.fc-header-toolbar {
+  /* height: 80px;*/
+  margin-bottom: 0;
+  padding: 12px;
+}
+
+.fc-sat {
+  background: #f5f6f7;
+}
+
+.fc-sun {
+  background: #f5f6f7;
+}
+
+.fc-other-month {
+  background: #f5f6f7;
+}
