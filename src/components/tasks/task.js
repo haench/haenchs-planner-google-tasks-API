@@ -21,13 +21,13 @@ const LiTask = styled.div`
   padding: ${props => (props.selected ? "1px" : "0px 4px 0px 4px")};
   border-width: ${props => (props.selected ? "0px 4px 0px 4px" : "1px")};
   border-style: solid;
-  border-color: #e4e7eb;
+  border-color: ${props => props.theme.borderlight};
   border-left-color: ${props =>
     props.selected ? props.theme.highlight : props.theme.borderlight};
 
   margin: 2px;
   :hover {
-    background: #e4e7eb;
+    background: ${props => props.theme.borderlight};
   }
   &:hover ${DeleteButton} {
     visibility: visible;
