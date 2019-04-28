@@ -24,7 +24,12 @@ const TasksPage = view(() => {
       <FixedPane>
         <TaskLists />
       </FixedPane>
-      <SplitPane split="vertical" style={splitPaneStyle} paneStyle={paneStyle}>
+      <SplitPane
+        defaultSize="50%"
+        split="vertical"
+        style={splitPaneStyle}
+        paneStyle={paneStyle}
+      >
         <Tasks />
         {tasksStore.selectedTask ? (
           <TaskDetails task={tasksStore.selectedTask} />
