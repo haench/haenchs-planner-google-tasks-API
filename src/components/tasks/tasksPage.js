@@ -5,9 +5,17 @@ import Tasks from "components/tasks/tasks";
 import TaskDetails from "components/tasks/taskDetails.outline";
 import tasksStore from "stores/tasksStore";
 import Navigation from "components/navigation_vertical";
-import { PageWrapper, FixedPane, FlexPane } from "components/pageLayout";
+import { PageWrapper, FixedPane } from "components/pageLayout";
 import SplitPane from "react-split-pane";
 import "./../SplitPane.css";
+
+const splitPaneStyle = { position: "relative" };
+
+const paneStyle = {
+  flexDirection: "column",
+  display: "flex",
+  background: "#f5f6f7"
+};
 
 const TasksPage = view(() => {
   return (
@@ -16,16 +24,12 @@ const TasksPage = view(() => {
       <FixedPane>
         <TaskLists />
       </FixedPane>
-      {/* <SplitPane split="vertical"> */}
-      <FlexPane>
+      <SplitPane split="vertical" style={splitPaneStyle} paneStyle={paneStyle}>
         <Tasks />
-      </FlexPane>
-      <FlexPane>
         {tasksStore.selectedTask ? (
           <TaskDetails task={tasksStore.selectedTask} />
         ) : null}
-      </FlexPane>
-      {/* </SplitPane> */}
+      </SplitPane>
     </PageWrapper>
   );
 });
