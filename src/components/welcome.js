@@ -67,7 +67,7 @@ const WelcomePage = () => {
           {appStore.loadingData ? (
             <span style={{ display: "flex", alignItems: "center" }}>
               <ScaleLoader
-                css={override}
+                // css={override}
                 sizeUnit={"em"}
                 size={1}
                 color={"#1070ca"}
