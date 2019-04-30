@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/haenchs-planner/precache-manifest.9f566a6ac0be7287f1a72d9394f1405f.js"
+  "/haenchs-planner/precache-manifest.8887a62e55b2650d20f78f94be771cf5.js"
 );
 
 workbox.clientsClaim();
