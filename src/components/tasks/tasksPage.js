@@ -14,7 +14,8 @@ const splitPaneStyle = { position: "relative" };
 const paneStyle = {
   flexDirection: "column",
   display: "flex",
-  background: "#f5f6f7"
+  background: "#f5f6f7",
+  height: "100%"
 };
 
 const TasksPage = view(() => {
@@ -25,15 +26,19 @@ const TasksPage = view(() => {
         <TaskLists />
       </FixedPane>
       <SplitPane
-        defaultSize="50%"
+        defaultSize="40%"
         split="vertical"
         style={splitPaneStyle}
         paneStyle={paneStyle}
       >
-        <Tasks />
-        {tasksStore.selectedTask ? (
-          <TaskDetails task={tasksStore.selectedTask} />
-        ) : null}
+        <div style={paneStyle}>
+          <Tasks />
+        </div>
+        <div style={paneStyle}>
+          {tasksStore.selectedTask ? (
+            <TaskDetails task={tasksStore.selectedTask} />
+          ) : null}
+        </div>
       </SplitPane>
     </PageWrapper>
   );
