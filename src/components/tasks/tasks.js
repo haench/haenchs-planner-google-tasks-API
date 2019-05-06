@@ -103,7 +103,9 @@ const Tasks = () => {
 
   return (
     <>
-      <Header.Wrapper>
+      <Header.Wrapper
+        style={{ background: "#fff", boxShadow: "0px 0px 1px 0px #e4e7eb" }}
+      >
         <Header.Title>{list.shortTitle}</Header.Title>
       </Header.Wrapper>
       <TaskForm
