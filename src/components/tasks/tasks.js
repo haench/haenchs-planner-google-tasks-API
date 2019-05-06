@@ -104,20 +104,20 @@ const Tasks = () => {
   return (
     <>
       <Header.Wrapper
-        style={{ background: "#fff", boxShadow: "0px 0px 1px 0px #e4e7eb" }}
+      // style={{ background: "#fff", boxShadow: "0px 0px 1px 0px #e4e7eb" }}
       >
         <Header.Title>{list.shortTitle}</Header.Title>
       </Header.Wrapper>
-      <TaskForm
-        saveTodo={title => tasksStore.insertTask(list.id, { title: title })}
-        placeholder="Add task..."
-      />
 
       <SortableList
         tasks={tasks}
         distance={10}
         shouldCancelStart={shouldCancelStart}
         onSortEnd={end => moveTask(end)}
+      />
+      <TaskForm
+        saveTodo={title => tasksStore.insertTask(list.id, { title: title })}
+        placeholder="Add task..."
       />
       <Footer>
         <MyToggle
