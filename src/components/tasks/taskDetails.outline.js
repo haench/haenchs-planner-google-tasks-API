@@ -8,17 +8,7 @@ import { format } from "date-fns";
 import { deLocale } from "date-fns/locale/de";
 import { debounce } from "lodash";
 import Editor from "rich-markdown-editor";
-
-const Header = styled.div`
-  flex: 0 0 80px;
-  background: #fff;
-  box-shadow: 0px 0px 1px 0px #e4e7eb;
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-`;
+import Header from "components/styled.components/header";
 
 const DateDisplay = styled.span`
   font-size: 16px;
@@ -32,13 +22,13 @@ const DetailsTitle = styled.div`
 `;
 
 const StyledEditor = styled(Editor)`
-  margin: 8px 2px 2px 2px;
+  margin: 2px 2px 2px 24px;
   padding: 4px 4px 4px 8px;
   justify-content: normal;
   overflow-y: auto;
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${props => props.theme.borderlight};
+  // border-width: 1px;
+  // border-style: solid;
+  // border-color: ${props => props.theme.borderlight};
   background: #fff;
 `;
 
@@ -64,15 +54,15 @@ const TaskDetails = props => {
 
   return (
     <>
-      <Header>
-        <DetailsTitle>{props.task.title}</DetailsTitle>
+      <Header.Wrapper>
+        <Header.Title>{props.task.title}</Header.Title>
         <DateDisplay>
           Due:
           {props.task.due
             ? format(props.task.due, " Do MMM[.] YYYY", { locale: deLocale })
             : " -- -- ----"}
         </DateDisplay>
-      </Header>
+      </Header.Wrapper>
 
       <StyledEditor
         key={props.task.id}

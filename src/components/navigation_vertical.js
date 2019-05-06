@@ -15,6 +15,8 @@ import AboutPopup from "components/about";
 
 import { NavPane } from "components/pageLayout";
 
+import logo from "logo.svg";
+
 const Icon = styled.div`
   margin: 0px 0px 0px 4px;
   padding: 2px 4px 2px 0px;
@@ -47,6 +49,8 @@ const Navigation = props => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
+      <img alt="self-Logo" src={logo} />
+
       <Icon
         isSelected={appStore.appState === "calendar"}
         onClick={() => {

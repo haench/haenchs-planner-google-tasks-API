@@ -18,8 +18,8 @@ const LiTask = styled.div`
   height: 32px;
   background: ${props => (props.selected ? "#e4e7eb" : "#f9f9fb")};
 
-  padding: ${props => (props.selected ? "1px" : "0px 4px 0px 4px")};
-  border-width: ${props => (props.selected ? "0px 4px 0px 4px" : "1px")};
+  padding: ${props => (props.selected ? "0px" : "0px 4px 0px 4px")};
+  border-width: ${props => (props.selected ? "0px 4px 0px 4px" : "0px")};
   border-style: solid;
   border-color: ${props => props.theme.borderlight};
   border-left-color: ${props =>

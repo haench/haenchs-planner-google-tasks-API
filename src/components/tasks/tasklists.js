@@ -4,9 +4,8 @@ import listsStore from "stores/listsStore";
 import { view } from "react-easy-state";
 import ListsForm from "components/tasks/listsForm";
 import styled from "styled-components";
-// import Navigation from "components/navigation";
-
 import TaskList from "components/tasks/tasklist";
+import Header from "components/styled.components/header";
 
 const GroupTitle = styled.div`
   margin: 10px 5px 5px 5px;
@@ -49,7 +48,9 @@ const TaskLists = () => {
 
   return (
     <>
-      {/* <Navigation /> */}
+      <Header.Wrapper>
+        <Header.Title>Tasks</Header.Title>
+      </Header.Wrapper>
       <ListOfGroups>
         {groups.map(group => (
           <div key={group.id}>

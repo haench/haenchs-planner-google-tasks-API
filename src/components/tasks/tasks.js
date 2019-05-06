@@ -10,22 +10,23 @@ import styled from "styled-components";
 import { ToggleLeft } from "styled-icons/feather/ToggleLeft";
 import { ToggleRight } from "styled-icons/feather/ToggleRight";
 import Button from "components/styled.components/button";
+import Header from "components/styled.components/header";
 
 const ListOfTasks = styled.div`
   overflow-y: auto;
   flex: 1;
 `;
 
-const Header = styled.div`
-  flex: 0 0 80px;
-  background: #fff;
-  box-shadow: 0px 0px 1px 0px #e4e7eb;
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-`;
+// const Header = styled.div`
+//   flex: 0 0 80px;
+//   background: #fff;
+//   box-shadow: 0px 0px 1px 0px #e4e7eb;
+//   padding: 12px;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   box-sizing: border-box;
+// `;
 
 const Footer = styled.div`
   flex: 0 0 32px;
@@ -37,11 +38,6 @@ const Footer = styled.div`
   flex-direction: row;
   align-items: center;
   box-sizing: border-box;
-`;
-
-const ListTitle = styled.div`
-  font-size: 24px;
-  font-weight: bold;
 `;
 
 const MyToggle = props => {
@@ -107,9 +103,9 @@ const Tasks = () => {
 
   return (
     <>
-      <Header>
-        <ListTitle>{list.shortTitle}</ListTitle>
-      </Header>
+      <Header.Wrapper>
+        <Header.Title>{list.shortTitle}</Header.Title>
+      </Header.Wrapper>
       <TaskForm
         saveTodo={title => tasksStore.insertTask(list.id, { title: title })}
         placeholder="Add task..."
