@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/haenchs-planner/static/js/runtime~main.60ee73d5.js"
   },
   {
-    "revision": "a355f754e99f309f6303",
-    "url": "/haenchs-planner/static/js/main.ef182061.chunk.js"
+    "revision": "b67af11c5702c2103666",
+    "url": "/haenchs-planner/static/js/main.405daf46.chunk.js"
   },
   {
     "revision": "76e5fbe6adff825e3369",
     "url": "/haenchs-planner/static/js/2.b0d21139.chunk.js"
   },
   {
-    "revision": "a355f754e99f309f6303",
+    "revision": "b67af11c5702c2103666",
     "url": "/haenchs-planner/static/css/main.4c9b8dfc.chunk.css"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/haenchs-planner/static/css/2.7015cc09.chunk.css"
   },
   {
-    "revision": "b67bb9e984440b8f523fa5e596fdd434",
+    "revision": "0226eb96f0edfc27233302f178fff4cb",
     "url": "/haenchs-planner/index.html"
   }
 ];
