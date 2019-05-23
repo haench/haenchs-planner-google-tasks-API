@@ -82,18 +82,19 @@ const tasksStore = store({
 
   async listTasks(listId) {
     // Clear all tasks before refresh: requiered for hidden/delted to work
-    tasksStore.tasks = tasksStore.tasks.filter(task => task.listId !== listId);
-    return gapiREST
-      .listTasks(listId, { ...tasksStore.display })
-      .then(tasks => tasks.map(task => tasksStore.setTask(task)));
+
+    return gapiREST.listTasks(listId, { ...tasksStore.display }).then(tasks => {
+      tasksStore.tasks = tasksStore.tasks.filter(
+        task => task.listId !== listId
+      );
+      tasks.map(task => tasksStore.setTask(task));
+    });
   },
 
-  async listAllTasks(params) {
+  async listAllTasks() {
     console.log("listAllTasks");
     await Promise.all(
-      listsStore.lists.map(
-        async list => await tasksStore.listTasks(list.id, params)
-      )
+      listsStore.lists.map(async list => await tasksStore.listTasks(list.id))
     );
   },
 
@@ -125,17 +126,22 @@ const tasksStore = store({
 
   async moveTask(movedTask, siblingTaskId) {
     // dirty Hack: fake a new position before network is done.
-    const sibling = tasksStore.getTask(siblingTaskId) || { position: "0" };
+    const sibling = tasksStore.getTask(siblingTaskId) || {
+      position: "00000000000000000000"
+    };
+    console.log(sibling.position);
     const modifiedTask = {
       ...movedTask,
       position: String(+sibling.position + 1).padStart(20, "0")
     };
+    console.log(modifiedTask.position);
     tasksStore.setTask(modifiedTask);
 
     movedTask = await gapiREST.moveTask(movedTask.listId, movedTask.id, {
       previous: siblingTaskId
     });
-    tasksStore.setTask(movedTask);
+    // tasksStore.setTask(movedTask);
+    tasksStore.listTasks(movedTask.listId);
   },
 
   async clearTasks() {

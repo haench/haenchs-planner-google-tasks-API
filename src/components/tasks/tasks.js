@@ -15,18 +15,8 @@ import Header from "components/styled.components/header";
 const ListOfTasks = styled.div`
   overflow-y: auto;
   flex: 1;
+  padding: 0px 0px 0px 2px;
 `;
-
-// const Header = styled.div`
-//   flex: 0 0 80px;
-//   background: #fff;
-//   box-shadow: 0px 0px 1px 0px #e4e7eb;
-//   padding: 12px;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   box-sizing: border-box;
-// `;
 
 const Footer = styled.div`
   flex: 0 0 32px;
@@ -85,9 +75,12 @@ const Tasks = () => {
   };
 
   const moveTask = ({ oldIndex, newIndex }) => {
+    console.log(oldIndex, newIndex);
     const movedTask = tasks[oldIndex];
+    console.log(movedTask.id);
     const _tasks = arrayMove(tasks, oldIndex, newIndex);
     const siblingTaskId = newIndex > 0 ? _tasks[newIndex - 1].id : null;
+    console.log(siblingTaskId);
     tasksStore.moveTask(movedTask, siblingTaskId);
   };
 
@@ -116,10 +109,10 @@ const Tasks = () => {
         onSortEnd={end => moveTask(end)}
       />
       <TaskForm
-        saveTodo={title => tasksStore.insertTask(list.id, { title: title })}
+        submitFcn={title => tasksStore.insertTask(list.id, { title: title })}
         placeholder="Add task..."
       />
-      <Footer>
+      {/* <Footer>
         <MyToggle
           defaultChecked={tasksStore.display.showHidden}
           onClick={toggleShowHidden}
@@ -133,7 +126,7 @@ const Tasks = () => {
         />
         <div style={{ flex: "1" }} />
         <Button onClick={() => tasksStore.clearTasks()}>Clear completed</Button>
-      </Footer>
+      </Footer> */}
     </>
   );
 };

@@ -5,7 +5,7 @@ import { Plus as PlusBase } from "styled-icons/feather/Plus";
 // from: https://codesandbox.io/s/github/yazeedb/react-hooks-todo
 
 const AddIcon = styled(PlusBase)`
-  color: #fdfdfd;
+  color: ${props => props.theme.whitetext};
 `;
 
 const Form = styled.form`
@@ -13,21 +13,29 @@ const Form = styled.form`
   flex-direction: row;
   align-items: center;
   flex: 0 0 32px;
-  border-top: 1px solid #475760;
-  box-sizing: border-box;
+  border: 1px solid ${props => props.theme.darkgrey};
+  margin: 8px 2px 4px 2px;
+  padding-left: 4px;
+  background: ${props => props.theme.borderdark};
 `;
 
 const Input = styled.input.attrs({ type: "text" })`
+  flex: 1;
   border: none;
   border-radius: 1px;
-  margin: 0px 4px 0px 16px;
-  padding-left: 8px;
+  margin: 0px 4px 0px 4px;
   height: 20px;
-  width: 180px;
-  background: #f5f6f7;
+  color: ${props => props.theme.lightgrey};
+  background-color: ${props => props.theme.borderdark};
   font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI",
     -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-  flex: 1;
+  :focus {
+    border: none;
+    outline: none;
+  }
+  ::placeholder {
+    color: ${props => props.theme.borderlight};
+  }
 `;
 
 const useInputState = () => {
@@ -53,16 +61,16 @@ const ListsForm = ({ saveTodo, placeholder }) => {
         reset();
       }}
     >
+      <label>
+        <input type="submit" style={{ display: "none" }} />
+        <AddIcon size="24" />
+      </label>
       <Input
         type="text"
         placeholder={placeholder}
         onChange={onChange}
         value={value}
       />
-      <label>
-        <input type="submit" style={{ display: "none" }} />
-        <AddIcon size="24" />
-      </label>
     </Form>
   );
 };

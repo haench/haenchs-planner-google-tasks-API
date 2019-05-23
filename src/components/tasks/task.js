@@ -15,8 +15,9 @@ const LiTask = styled.div`
   flex-wrap: nowrap;
   align-items: center;
 
-  height: 32px;
-  background: ${props => (props.selected ? "#e4e7eb" : "#f9f9fb")};
+  height: 36px;
+  background: ${props =>
+    props.selected ? props.theme.borderlight : props.theme.lightgrey};
 
   padding: ${props => (props.selected ? "0px" : "0px 4px 0px 4px")};
   border-width: ${props => (props.selected ? "0px 4px 0px 4px" : "0px")};
@@ -25,7 +26,7 @@ const LiTask = styled.div`
   border-left-color: ${props =>
     props.selected ? props.theme.highlight : props.theme.borderlight};
 
-  margin: 2px;
+  /* margin: 2px; */
   :hover {
     background: ${props => props.theme.borderlight};
   }
@@ -34,13 +35,14 @@ const LiTask = styled.div`
     margin-left: auto;
   }
   &:hover input {
-    background: #e4e7eb;
+    background: ${props => props.theme.borderlight};
   }
   input {
     outline: none;
     border: none;
     padding: 4px;
-    background: ${props => (props.selected ? "#e4e7eb" : "#f9f9fb")};
+    background: ${props =>
+      props.selected ? props.theme.borderlight : props.theme.lightgrey};
     text-decoration: ${props => (props.checked ? "line-through" : "none")};
     vertical-align: middle;
     flex-grow: 1;

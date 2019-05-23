@@ -23,7 +23,7 @@ const List = styled.div`
   cursor: default;
   scroll-snap-align: start;
   :hover {
-    background: ${props => props.theme.highlight};
+    background: ${props => props.theme.borderdark};
   }
 
   &:hover ${Pill} {
@@ -32,7 +32,8 @@ const List = styled.div`
   &:hover ${ButtonGroup} {
     display: flex;
   }
-  background: ${props => (props.isSelected ? "#475760" : "transparent")};
+  background: ${props =>
+    props.isSelected ? props.theme.borderdark : "transparent"};
 
   border-width: 0px 0px 0px 4px;
   border-style: solid;

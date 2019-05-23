@@ -10,7 +10,7 @@ const Input = styled.input.attrs({ type: "text" })`
   border-radius: 1px;
   margin-left: 12px;
   padding: 2px;
-  background: #fff;
+  background: ${props => props.theme.whitetext};
   :focus {
     border: none;
     outline: none;
@@ -23,9 +23,9 @@ const Form = styled.form`
   display: flex;
   flex: 0 0 32px;
   align-items: center;
-  background: #fff;
+  background: ${props => props.theme.whitetext};
   border: 1px solid #e4e7eb;
-  margin: 8px 2px 6px 2px;
+  margin: 8px 2px 4px 2px;
   padding-left: 4px;
 `;
 
@@ -41,14 +41,14 @@ const useInputState = () => {
   };
 };
 
-const TaskForm = ({ saveTodo, placeholder }) => {
+const TaskForm = ({ submitFcn, placeholder }) => {
   const { value, reset, onChange } = useInputState();
 
   return (
     <Form
       onSubmit={event => {
         event.preventDefault();
-        saveTodo(value);
+        submitFcn(value);
         reset();
       }}
     >
