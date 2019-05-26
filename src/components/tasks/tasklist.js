@@ -90,6 +90,7 @@ const TaskList = ({ list, isSelected }) => {
       onClick={() => {
         listsStore.selectedListId = list.id;
         tasksStore.selectedTaskId = null;
+        tasksStore.listTasks(list.id);
       }}
     >
       {isRename ? (

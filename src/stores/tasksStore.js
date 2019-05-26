@@ -19,39 +19,45 @@ const tasksStore = store({
 
   setTask(task) {
     // Does Update or Insert
-    // console.log("setTask");
-    const index = tasksStore.tasks.findIndex(_task => _task.id === task.id);
-    if (index === -1) tasksStore.tasks.push(task);
-    else tasksStore.tasks[index] = task;
+    console.log("setTask", task, tasksStore.tasks);
+    const listIndex = listsStore.lists.findIndex(
+      _list => _list.id === task.listId
+    );
+
+    const index = tasksStore.tasks[listIndex].findIndex(
+      _task => _task.id === task.id
+    );
+    console.log(listIndex, index);
+    if (index === -1) tasksStore.tasks[listIndex].push(task);
+    else tasksStore.tasks[listIndex][index] = task;
+    console.log(tasksStore.currentTasks);
   },
 
   set selectedTask(task) {
     if (listsStore.selectedListId) {
       tasksStore.selectedTaskId = task.id;
-      tasksStore.selectedTaskIndex = tasksStore.tasks.findIndex(
-        _task => _task.id === task.id
-      );
+      tasksStore.selectedTaskIndex = tasksStore.tasks[
+        listsStore.currentListIndex
+      ].findIndex(_task => _task.id === task.id);
     }
   },
 
   get selectedTask() {
-    return (tasksStore.tasks || []).find(
+    return (tasksStore.tasks[listsStore.currentListIndex] || []).find(
       task => task.id === tasksStore.selectedTaskId
     );
   },
 
+  set currentTasks(tasks) {
+    tasksStore.tasks[listsStore.currentListIndex] = tasks;
+  },
+
   get currentTasks() {
-    const tasks = (tasksStore.tasks || []).filter(
-      task => task.listId === listsStore.selectedListId
-    );
-    const sortedTasks = tasks.sort((a, b) => {
-      return a.position.localeCompare(b.position);
-    });
-    return sortedTasks;
+    return tasksStore.tasks[listsStore.currentListIndex] || [];
   },
 
   getTasks(listId) {
-    return (tasksStore.tasks || []).filter(task => task.listId === listId);
+    return tasksStore.tasks[listsStore.getListIndex(listId)] || [];
   },
 
   nextTask() {
@@ -84,10 +90,11 @@ const tasksStore = store({
     // Clear all tasks before refresh: requiered for hidden/delted to work
 
     return gapiREST.listTasks(listId, { ...tasksStore.display }).then(tasks => {
-      tasksStore.tasks = tasksStore.tasks.filter(
-        task => task.listId !== listId
+      const sortedTasks = tasks.sort((a, b) =>
+        a.position.localeCompare(b.position)
       );
-      tasks.map(task => tasksStore.setTask(task));
+      tasksStore.tasks[listsStore.getListIndex(listId)] = sortedTasks;
+      console.log(sortedTasks);
     });
   },
 
@@ -101,6 +108,7 @@ const tasksStore = store({
   async insertTask(listId, task) {
     const newTask = await gapiREST.insertTask(listId, task);
     tasksStore.setTask(newTask);
+    await tasksStore.listTasks(listId);
   },
 
   async updateTask(changedTask) {
@@ -120,37 +128,41 @@ const tasksStore = store({
 
   async deleteTask(task) {
     if (tasksStore.selectedTaskId === task.id) tasksStore.selectedTaskId = null;
-    tasksStore.tasks = tasksStore.tasks.filter(_task => _task.id !== task.id);
+    tasksStore.tasks[listsStore.getListIndex(task.listId)] = tasksStore.tasks[
+      listsStore.getListIndex(task.listId)
+    ].filter(_task => _task.id !== task.id);
     await gapiREST.deleteTask(task.listId, task.id);
   },
 
   async moveTask(movedTask, siblingTaskId) {
     // dirty Hack: fake a new position before network is done.
-    const sibling = tasksStore.getTask(siblingTaskId) || {
-      position: "00000000000000000000"
-    };
-    console.log(sibling.position);
-    const modifiedTask = {
-      ...movedTask,
-      position: String(+sibling.position + 1).padStart(20, "0")
-    };
-    console.log(modifiedTask.position);
-    tasksStore.setTask(modifiedTask);
+    // const sibling = tasksStore.getTask(siblingTaskId) || {
+    //   position: -1
+    // };
+    // console.log(sibling.position);
+    // const modifiedTask = {
+    //   ...movedTask,
+    //   position: String(+sibling.position + 1).padStart(20, "0")
+    // };
+    // console.log(modifiedTask.position);
+    // tasksStore.setTask(modifiedTask);
 
     movedTask = await gapiREST.moveTask(movedTask.listId, movedTask.id, {
       previous: siblingTaskId
     });
-    // tasksStore.setTask(movedTask);
-    tasksStore.listTasks(movedTask.listId);
+    console.log("Moved", movedTask);
+    //tasksStore.setTask(movedTask);
+    await tasksStore.listTasks(movedTask.listId);
+    console.log(tasksStore.currentTasks);
   },
 
   async clearTasks() {
-    const listID = listsStore.selectedListId;
+    const listId = listsStore.selectedListId;
     tasksStore.tasks = tasksStore.tasks.filter(
-      task => !(task.status === "completed" && task.listId === listID)
+      task => !(task.status === "completed" && task.listId === listId)
     );
-    await gapiREST.clearTasks(listID);
-    await tasksStore.listTasks(listID);
+    await gapiREST.clearTasks(listId);
+    await tasksStore.listTasks(listId);
   }
 });
 

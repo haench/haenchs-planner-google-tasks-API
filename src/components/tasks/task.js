@@ -1,6 +1,7 @@
 import React from "react";
 import { view } from "react-easy-state";
 import tasksStore from "stores/tasksStore";
+import listsStore from "stores/listsStore";
 import { SortableElement } from "react-sortable-hoc";
 import styled from "styled-components";
 import Checkbox from "components/styled.components/checkbox";
@@ -55,7 +56,9 @@ const LiTask = styled.div`
 `;
 
 const Task = props => {
-  const task = props.task;
+  // const task = tasksStore.tasks[listsStore.currentListIndex][props.index];
+  const task = tasksStore.currentTasks[props.index];
+
   const isSelected = tasksStore.selectedTaskId === task.id;
   const isChecked = task.status === "completed";
 

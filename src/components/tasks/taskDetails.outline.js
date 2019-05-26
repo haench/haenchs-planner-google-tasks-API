@@ -15,12 +15,6 @@ const DateDisplay = styled.span`
   margin-right: 12px;
 `;
 
-const DetailsTitle = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  flex: 1;
-`;
-
 const StyledEditor = styled(Editor)`
   margin: 2px 2px 2px 24px;
   padding: 4px 4px 4px 8px;

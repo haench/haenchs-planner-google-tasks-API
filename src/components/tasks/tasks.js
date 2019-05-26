@@ -75,12 +75,12 @@ const Tasks = () => {
   };
 
   const moveTask = ({ oldIndex, newIndex }) => {
-    console.log(oldIndex, newIndex);
+    console.log("task moved");
     const movedTask = tasks[oldIndex];
-    console.log(movedTask.id);
     const _tasks = arrayMove(tasks, oldIndex, newIndex);
     const siblingTaskId = newIndex > 0 ? _tasks[newIndex - 1].id : null;
-    console.log(siblingTaskId);
+    tasksStore.currentTasks = _tasks;
+    console.log(tasksStore.currentTasks);
     tasksStore.moveTask(movedTask, siblingTaskId);
   };
 
@@ -96,9 +96,7 @@ const Tasks = () => {
 
   return (
     <>
-      <Header.Wrapper
-      // style={{ background: "#fff", boxShadow: "0px 0px 1px 0px #e4e7eb" }}
-      >
+      <Header.Wrapper>
         <Header.Title>{list.shortTitle}</Header.Title>
       </Header.Wrapper>
 

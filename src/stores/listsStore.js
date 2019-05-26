@@ -5,9 +5,20 @@ import configStore from "stores/configStore";
 const listsStore = store({
   lists: [],
   selectedListId: null,
+  selectedListIndex: null,
+
+  get currentListIndex() {
+    return listsStore.lists.findIndex(
+      list => list.id === listsStore.selectedListId
+    );
+  },
 
   get currentList() {
     return listsStore.lists.find(list => list.id === listsStore.selectedListId);
+  },
+
+  getListIndex(listId) {
+    return listsStore.lists.findIndex(list => list.id === listId);
   },
 
   getList(listId) {
