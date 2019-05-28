@@ -73,7 +73,6 @@ const WelcomePage = () => {
                 color={"#1070ca"}
                 loading={true}
               />
-              Loading ...
             </span>
           ) : (
             <GoogleLogin

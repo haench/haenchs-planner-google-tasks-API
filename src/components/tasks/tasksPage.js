@@ -43,8 +43,8 @@ const TasksPage = view(() => {
         <div style={detailsPaneStyle}>
           {tasksStore.selectedTask ? (
             <TaskDetails
-              task={tasksStore.selectedTask}
               key={tasksStore.selectedTask.id}
+              task={tasksStore.selectedTask}
             />
           ) : null}
         </div>
