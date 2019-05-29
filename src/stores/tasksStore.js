@@ -1,6 +1,7 @@
 import { store } from "react-easy-state";
 import gapiREST from "utils/gapiREST.js";
 import listsStore from "stores/listsStore";
+import arrayMove from "array-move";
 
 const tasksStore = store({
   tasks: [],
@@ -88,7 +89,6 @@ const tasksStore = store({
 
   async listTasks(listId) {
     // Clear all tasks before refresh: requiered for hidden/delted to work
-
     return gapiREST.listTasks(listId, { ...tasksStore.display }).then(tasks => {
       const sortedTasks = tasks.sort((a, b) =>
         a.position.localeCompare(b.position)
@@ -124,6 +124,7 @@ const tasksStore = store({
     );
     // Update our existing task with the new task
     tasksStore.setTask(updatedTask);
+    await tasksStore.listTasks(updatedTask.listId);
   },
 
   async deleteTask(task) {
@@ -134,26 +135,20 @@ const tasksStore = store({
     await gapiREST.deleteTask(task.listId, task.id);
   },
 
-  async moveTask(movedTask, siblingTaskId) {
-    // dirty Hack: fake a new position before network is done.
-    // const sibling = tasksStore.getTask(siblingTaskId) || {
-    //   position: -1
-    // };
-    // console.log(sibling.position);
-    // const modifiedTask = {
-    //   ...movedTask,
-    //   position: String(+sibling.position + 1).padStart(20, "0")
-    // };
-    // console.log(modifiedTask.position);
-    // tasksStore.setTask(modifiedTask);
+  async moveTask({ oldIndex, newIndex }) {
+    const movedTask = tasksStore.currentTasks[oldIndex];
+    tasksStore.currentTasks = arrayMove(
+      tasksStore.currentTasks,
+      oldIndex,
+      newIndex
+    );
+    const siblingTaskId =
+      newIndex > 0 ? tasksStore.currentTasks[newIndex - 1].id : null;
 
-    movedTask = await gapiREST.moveTask(movedTask.listId, movedTask.id, {
+    await gapiREST.moveTask(movedTask.listId, movedTask.id, {
       previous: siblingTaskId
     });
-    console.log("Moved", movedTask);
-    //tasksStore.setTask(movedTask);
     await tasksStore.listTasks(movedTask.listId);
-    console.log(tasksStore.currentTasks);
   },
 
   async clearTasks() {

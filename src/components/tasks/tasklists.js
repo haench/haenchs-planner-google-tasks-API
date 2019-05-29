@@ -51,6 +51,12 @@ const TaskLists = () => {
       <Header.Wrapper>
         <Header.Title>Tasks</Header.Title>
       </Header.Wrapper>
+
+      <ListsForm
+        saveTodo={title => listsStore.insertTaskList(title)}
+        placeholder="Add list..."
+      />
+
       <ListOfGroups>
         {groups.map(group => (
           <div key={group.id}>
@@ -69,10 +75,6 @@ const TaskLists = () => {
           </div>
         ))}
       </ListOfGroups>
-      <ListsForm
-        saveTodo={title => listsStore.insertTaskList(title)}
-        placeholder="Add list..."
-      />
     </>
   );
 };

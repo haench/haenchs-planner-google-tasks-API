@@ -5,7 +5,6 @@ import { view } from "react-easy-state";
 import Task from "components/tasks/task";
 import { SortableContainer } from "react-sortable-hoc";
 import TaskForm from "components/tasks/taskForm";
-import arrayMove from "array-move";
 import styled from "styled-components";
 import Header from "components/styled.components/header";
 
@@ -37,28 +36,21 @@ const Tasks = () => {
     return event.target.tagName.toLowerCase() === "button";
   };
 
-  const moveTask = ({ oldIndex, newIndex }) => {
-    const movedTask = tasks[oldIndex];
-    const _tasks = arrayMove(tasks, oldIndex, newIndex);
-    const siblingTaskId = newIndex > 0 ? _tasks[newIndex - 1].id : null;
-    tasksStore.moveTask(movedTask, siblingTaskId);
-  };
-
   return (
     <>
       <Header.Wrapper>
         <Header.Title>{list.shortTitle}</Header.Title>
       </Header.Wrapper>
 
+      <TaskForm
+        submitFcn={title => tasksStore.insertTask(list.id, { title: title })}
+        placeholder="Add task..."
+      />
       <SortableList
         tasks={tasks}
         distance={10}
         shouldCancelStart={shouldCancelStart}
         onSortEnd={end => tasksStore.moveTask(end)}
-      />
-      <TaskForm
-        submitFcn={title => tasksStore.insertTask(list.id, { title: title })}
-        placeholder="Add task..."
       />
       {/* <TasksFooter> */}
     </>

@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import tasksStore from "stores/tasksStore";
 import { view } from "react-easy-state";
-
-import "easymde/dist/easymde.min.css";
+import Button from "components/styled.components/button";
 import styled from "styled-components";
 import { format } from "date-fns";
 import { deLocale } from "date-fns/locale/de";
@@ -26,19 +25,8 @@ const StyledEditor = styled(Editor)`
   background: #fff;
 `;
 
-// const Footer = styled.div`
-//   flex: 0 0 32px;
-//   background: #fff;
-//   /* box-shadow: 0px -1px 0px 0px #e4e7eb; */
-//   border-top: 1px solid #e4e7eb;
-//   padding: 4px;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   box-sizing: border-box;
-// `;
-
 const TaskDetails = props => {
+  const [isReadOnly, setReadOnly] = useState(true);
   const debounceUpdateTask = useCallback(
     debounce(value => {
       tasksStore.updateTask({ ...props.task, notes: value() });
@@ -51,20 +39,25 @@ const TaskDetails = props => {
       <Header.Wrapper>
         <Header.Title>{props.task.title}</Header.Title>
         <DateDisplay>
-          Due:
           {props.task.due
             ? format(props.task.due, " Do MMM[.] YYYY", { locale: deLocale })
-            : " -- -- ----"}
+            : null}
         </DateDisplay>
+        <Button onClick={() => setReadOnly(!isReadOnly)}>
+          {isReadOnly ? "Edit" : "Save"}
+        </Button>
       </Header.Wrapper>
 
       <StyledEditor
         key={props.task.id}
+        readOnly={isReadOnly}
         defaultValue={props.task.notes}
         onChange={debounceUpdateTask}
         placeholder="Add note ..."
+        onClickLink={href => {
+          window.open(href);
+        }}
       />
-      {/* <Footer /> */}
     </>
   );
 };
