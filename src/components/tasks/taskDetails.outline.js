@@ -8,6 +8,8 @@ import { deLocale } from "date-fns/locale/de";
 import { debounce } from "lodash";
 import Editor from "rich-markdown-editor";
 import Header from "components/styled.components/header";
+import EditButton from "components/styled.components/editButton";
+import SaveButton from "components/styled.components/saveButton";
 
 const DateDisplay = styled.span`
   font-size: 16px;
@@ -19,10 +21,14 @@ const StyledEditor = styled(Editor)`
   padding: 4px 4px 4px 8px;
   justify-content: normal;
   overflow-y: auto;
-  // border-width: 1px;
-  // border-style: solid;
-  // border-color: ${props => props.theme.borderlight};
   background: #fff;
+`;
+
+const Seperator = styled.div`
+  margin: 8px 2px 8px 2px;
+  border-width: 1px 0px 0px 0px;
+  border-color: ${props => props.theme.borderlight};
+  border-style: solid;
 `;
 
 const TaskDetails = props => {
@@ -38,16 +44,31 @@ const TaskDetails = props => {
     <>
       <Header.Wrapper>
         <Header.Title>{props.task.title}</Header.Title>
+
+        {isReadOnly ? (
+          <EditButton
+            onClick={() => {
+              setReadOnly(false);
+            }}
+            color="#475760"
+            size="24"
+          />
+        ) : (
+          <SaveButton
+            onClick={() => {
+              setReadOnly(true);
+            }}
+            color="#475760"
+            size="24"
+          />
+        )}
         <DateDisplay>
           {props.task.due
             ? format(props.task.due, " Do MMM[.] YYYY", { locale: deLocale })
             : null}
         </DateDisplay>
-        <Button onClick={() => setReadOnly(!isReadOnly)}>
-          {isReadOnly ? "Edit" : "Save"}
-        </Button>
       </Header.Wrapper>
-
+      <Seperator />
       <StyledEditor
         key={props.task.id}
         readOnly={isReadOnly}
