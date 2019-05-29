@@ -1,16 +1,15 @@
 {
-  "main.css": "/haenchs-planner/static/css/main.39df42e3.chunk.css",
-  "main.js": "/haenchs-planner/static/js/main.a1497489.chunk.js",
-  "main.js.map": "/haenchs-planner/static/js/main.a1497489.chunk.js.map",
+  "main.css": "/haenchs-planner/static/css/main.4c9b8dfc.chunk.css",
+  "main.js": "/haenchs-planner/static/js/main.4baae879.chunk.js",
+  "main.js.map": "/haenchs-planner/static/js/main.4baae879.chunk.js.map",
   "runtime~main.js": "/haenchs-planner/static/js/runtime~main.60ee73d5.js",
   "runtime~main.js.map": "/haenchs-planner/static/js/runtime~main.60ee73d5.js.map",
-  "static/css/2.69c93a26.chunk.css": "/haenchs-planner/static/css/2.69c93a26.chunk.css",
-  "static/js/2.39aac439.chunk.js": "/haenchs-planner/static/js/2.39aac439.chunk.js",
-  "static/js/2.39aac439.chunk.js.map": "/haenchs-planner/static/js/2.39aac439.chunk.js.map",
+  "static/css/2.73ff3e58.chunk.css": "/haenchs-planner/static/css/2.73ff3e58.chunk.css",
+  "static/js/2.b7b06faa.chunk.js": "/haenchs-planner/static/js/2.b7b06faa.chunk.js",
+  "static/js/2.b7b06faa.chunk.js.map": "/haenchs-planner/static/js/2.b7b06faa.chunk.js.map",
   "index.html": "/haenchs-planner/index.html",
-  "precache-manifest.5c793dc4898893c7e391813653f164ec.js": "/haenchs-planner/precache-manifest.5c793dc4898893c7e391813653f164ec.js",
+  "precache-manifest.1101a5663f483ffbe11b1dda0df118a8.js": "/haenchs-planner/precache-manifest.1101a5663f483ffbe11b1dda0df118a8.js",
   "service-worker.js": "/haenchs-planner/service-worker.js",
-  "static/css/2.69c93a26.chunk.css.map": "/haenchs-planner/static/css/2.69c93a26.chunk.css.map",
-  "static/css/main.39df42e3.chunk.css.map": "/haenchs-planner/static/css/main.39df42e3.chunk.css.map",
-  "static/media/logo.svg": "/haenchs-planner/static/media/logo.b0fda0a5.svg"
+  "static/css/2.73ff3e58.chunk.css.map": "/haenchs-planner/static/css/2.73ff3e58.chunk.css.map",
+  "static/css/main.4c9b8dfc.chunk.css.map": "/haenchs-planner/static/css/main.4c9b8dfc.chunk.css.map"
 }
