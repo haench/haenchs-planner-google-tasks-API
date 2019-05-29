@@ -14,7 +14,7 @@ const ButtonGroup = styled.div`
 `;
 
 const List = styled.div`
-  margin: 0px 0px 0px 4px;
+  margin: 0px 2px 0px 2px;
   padding: 0px 16px 0px 4px;
   line-height: 36px;
   height: 36px;
