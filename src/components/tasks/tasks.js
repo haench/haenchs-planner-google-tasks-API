@@ -7,6 +7,7 @@ import { SortableContainer } from "react-sortable-hoc";
 import TaskForm from "components/tasks/taskForm";
 import styled from "styled-components";
 import Header from "components/styled.components/header";
+import TasksFooter from "components/tasks/tasksFooter";
 
 const ListOfTasks = styled.div`
   overflow-y: auto;
@@ -52,7 +53,7 @@ const Tasks = () => {
         shouldCancelStart={shouldCancelStart}
         onSortEnd={end => tasksStore.moveTask(end)}
       />
-      {/* <TasksFooter> */}
+      <TasksFooter />
     </>
   );
 };

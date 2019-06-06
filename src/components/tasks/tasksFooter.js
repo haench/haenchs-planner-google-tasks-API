@@ -1,5 +1,8 @@
+import React from "react";
 import styled from "styled-components";
-
+import { view } from "react-easy-state";
+import tasksStore from "stores/tasksStore";
+import listsStore from "stores/listsStore";
 import { ToggleLeft } from "styled-icons/feather/ToggleLeft";
 import { ToggleRight } from "styled-icons/feather/ToggleRight";
 import Button from "components/styled.components/button";
@@ -41,29 +44,30 @@ const MyToggle = props => {
 const TasksFooter = () => {
   const toggleShowHidden = () => {
     tasksStore.display.showHidden = !tasksStore.display.showHidden;
-    tasksStore.listTasks(list.id);
+    // tasksStore.listTasks(list.id);
   };
 
   const toggleShowDeleted = () => {
     tasksStore.display.showDeleted = !tasksStore.display.showDeleted;
-    tasksStore.listTasks(list.id);
+    // tasksStore.listTasks(list.id);
   };
+  return (
+    <Footer>
+      <MyToggle
+        defaultChecked={tasksStore.display.showHidden}
+        onClick={toggleShowHidden}
+        label="Show hidden"
+      />
 
-  <Footer>
-    <MyToggle
-      defaultChecked={tasksStore.display.showHidden}
-      onClick={toggleShowHidden}
-      label="Show hidden"
-    />
-
-    <MyToggle
-      defaultChecked={tasksStore.display.showDeleted}
-      onClick={toggleShowDeleted}
-      label="Show deleted"
-    />
-    <div style={{ flex: "1" }} />
-    <Button onClick={() => tasksStore.clearTasks()}>Clear completed</Button>
-  </Footer>;
+      <MyToggle
+        defaultChecked={tasksStore.display.showDeleted}
+        onClick={toggleShowDeleted}
+        label="Show deleted"
+      />
+      <div style={{ flex: "1" }} />
+      <Button onClick={() => tasksStore.clearTasks()}>Clear completed</Button>
+    </Footer>
+  );
 };
 
 export default view(TasksFooter);
