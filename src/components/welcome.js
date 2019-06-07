@@ -57,8 +57,8 @@ const WelcomePage = () => {
           haenchs planner is a desktop PWA that integrates with google tasks and
           calendar. It’s basically a nicer way to organize tasks/events you
           already have in your google account. Everything you do is synced back
-          to your google account. It is neither optimized nor intedet to be used
-          on mobile.
+          to your google account. It is neither optimized nor intendet to be
+          used on mobile.
           <br />
           <br /> You need to login with a google account to see all the beauty.
           <br />

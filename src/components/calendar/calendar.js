@@ -89,7 +89,7 @@ const Calendar = props => {
   const calRef = useRef(null);
 
   useEffect(() => {
-    addEventSources(calRef.current.getApi());
+    addEventSources(calRef.current.getApi(), [eventStore.calendarList]);
   });
 
   return (
@@ -99,6 +99,12 @@ const Calendar = props => {
       plugins={[dayGridPlugin]}
       // events={SingleEventSource}
       // eventSources={eventSources}
+      eventTimeFormat={{
+        hour: "numeric",
+        minute: "2-digit",
+        meridiem: false
+      }}
+      weekNumbers={true}
       weekNumberCalculation={"iso"}
       firstDay={1}
       showNonCurrentDates={true}
