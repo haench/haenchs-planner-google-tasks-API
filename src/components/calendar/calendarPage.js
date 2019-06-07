@@ -10,10 +10,10 @@ const CalendarPage = view(() => {
   return (
     <PageWrapper>
       <Navigation />
-      <FixedPane>
+      {/* <FixedPane>
         <EventList />
         <CalendarSelector />
-      </FixedPane>
+      </FixedPane> */}
       <FlexPane>
         <Calendar
           showDaysOfWeek={true}

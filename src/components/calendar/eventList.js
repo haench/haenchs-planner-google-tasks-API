@@ -5,6 +5,7 @@ import { view } from "react-easy-state";
 import styled from "styled-components";
 import eventStore from "stores/eventStore";
 import Dot from "components/styled.components/dot";
+import Header from "components/styled.components/header";
 
 const SnappingList = styled.div`
   flex: 1 0;
@@ -130,7 +131,14 @@ const EventList = () => {
     return currentDay;
   });
 
-  return <SnappingList>{renderDaysWithEvents}</SnappingList>;
+  return (
+    <>
+      <Header.Wrapper>
+        <Header.Title>Calendar</Header.Title>
+      </Header.Wrapper>
+      <SnappingList>{renderDaysWithEvents}</SnappingList>
+    </>
+  );
 };
 
 export default view(EventList);

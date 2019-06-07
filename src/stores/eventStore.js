@@ -9,7 +9,9 @@ import {
   isSameDay,
   isFirstDayOfMonth,
   isLastDayOfMonth,
-  isMonday
+  isMonday,
+  startOfWeek,
+  addWeeks
 } from "date-fns";
 
 const eventStore = store({
@@ -54,7 +56,7 @@ const eventStore = store({
                 parse(entry.end.dateTime || entry.end.date),
                 parse(entry.start.dateTime || entry.start.date)
               ),
-              allday: !!differenceInCalendarDays(
+              allDay: !!differenceInCalendarDays(
                 parse(entry.end.dateTime || entry.end.date),
                 parse(entry.start.dateTime || entry.start.date)
               ),
@@ -72,19 +74,21 @@ const eventStore = store({
   buildYear() {
     // console.time("concatenation");
 
-    var days = eachDay(
-      eventStore.startOfCalendar,
-      eventStore.endOfCalendar
-    ).map(day => ({
-      date: day,
-      isFirstDayOfMonth: isFirstDayOfMonth(day),
-      isLastDayOfMonth: isLastDayOfMonth(day),
-      isFirstDayOfWeek: isMonday(day),
-      shortEvents: [...new Array(1)],
-      longEvents: [...new Array(1)],
-      hasEvents: false,
-      listRef: createRef(null)
-    }));
+    // var days = eachDay(
+    //   eventStore.startOfCalendar,
+    //   eventStore.endOfCalendar
+    var days = eachDay(new Date(), addWeeks(startOfWeek(new Date()), 2)).map(
+      day => ({
+        date: day,
+        isFirstDayOfMonth: isFirstDayOfMonth(day),
+        isLastDayOfMonth: isLastDayOfMonth(day),
+        isFirstDayOfWeek: isMonday(day),
+        shortEvents: [...new Array(1)],
+        longEvents: [...new Array(1)],
+        hasEvents: false,
+        listRef: createRef(null)
+      })
+    );
 
     eventStore.events.forEach(event => {
       // console.log(event.daySpan);

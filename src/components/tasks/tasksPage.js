@@ -8,6 +8,8 @@ import Navigation from "components/navigation_vertical";
 import { PageWrapper, FixedPane } from "components/pageLayout";
 import SplitPane from "react-split-pane";
 import "./../SplitPane.css";
+import EventList from "components/calendar/eventList";
+import CalendarSelector from "components/calendar/calendarSelector";
 
 const splitPaneStyle = { position: "relative" };
 
@@ -30,6 +32,8 @@ const TasksPage = view(() => {
       <Navigation />
       <FixedPane>
         <TaskLists />
+        <EventList />
+        <CalendarSelector />
       </FixedPane>
       <SplitPane
         defaultSize="40%"

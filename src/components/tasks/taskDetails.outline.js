@@ -17,7 +17,7 @@ const DateDisplay = styled.span`
 `;
 
 const StyledEditor = styled(Editor)`
-  margin: 2px 2px 2px 24px;
+  margin: 2px 24px 2px 24px;
   padding: 4px 4px 4px 8px;
   justify-content: normal;
   overflow-y: auto;

@@ -1,7 +1,7 @@
 import React from "react";
 import { view } from "react-easy-state";
 import tasksStore from "stores/tasksStore";
-import listsStore from "stores/listsStore";
+// import listsStore from "stores/listsStore";
 import { SortableElement } from "react-sortable-hoc";
 import styled from "styled-components";
 import Checkbox from "components/styled.components/checkbox";
@@ -10,6 +10,7 @@ import DeleteButton from "components/styled.components/deleteButton";
 import { format } from "date-fns";
 import { deLocale } from "date-fns/locale/de";
 import Pill from "components/styled.components/pill";
+import TaskDetails from "components/tasks/taskDetails.outline";
 
 const LiTask = styled.div`
   display: flex;
@@ -73,38 +74,46 @@ const Task = props => {
   };
 
   return (
-    <LiTask
-      {...props}
-      checked={isChecked}
-      selected={isSelected}
-      onClick={() => {
-        tasksStore.selectedTask = task;
-      }}
-    >
-      <Checkbox checked={isChecked} onClick={toggleTask} />
-      <DebounceInput
-        id="task"
-        minLength={2}
-        debounceTimeout={300}
-        onChange={event =>
-          tasksStore.updateTask({ ...task, title: event.target.value })
-        }
-        value={task.title}
-        autoFocus={isSelected}
-        key={isSelected}
-      />
-      <Pill>
-        {task.due
-          ? format(task.due, "Do MMM[.] YYYY", { locale: deLocale })
-          : ""}
-      </Pill>
-      <DeleteButton
-        onClick={() => tasksStore.deleteTask(task)}
-        defaultHidden
-        color={"#777"}
-        size="24"
-      />
-    </LiTask>
+    <>
+      <LiTask
+        {...props}
+        checked={isChecked}
+        selected={isSelected}
+        onClick={() => {
+          tasksStore.selectedTask = task;
+        }}
+      >
+        <Checkbox checked={isChecked} onClick={toggleTask} />
+        <DebounceInput
+          id="task"
+          minLength={2}
+          debounceTimeout={300}
+          onChange={event =>
+            tasksStore.updateTask({ ...task, title: event.target.value })
+          }
+          value={task.title}
+          autoFocus={isSelected}
+          key={isSelected}
+        />
+        <Pill>
+          {task.due
+            ? format(task.due, "Do MMM[.] YYYY", { locale: deLocale })
+            : ""}
+        </Pill>
+        <DeleteButton
+          onClick={() => tasksStore.deleteTask(task)}
+          defaultHidden
+          color={"#777"}
+          size="24"
+        />
+      </LiTask>
+      {/* {tasksStore.selectedTaskId == task.id ? (
+        <TaskDetails
+          key={tasksStore.selectedTask.id}
+          task={tasksStore.selectedTask}
+        />
+      ) : null} */}
+    </>
   );
 };
 
