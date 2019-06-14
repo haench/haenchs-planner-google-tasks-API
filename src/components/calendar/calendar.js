@@ -106,6 +106,7 @@ const Calendar = props => {
       }}
       weekNumbers={true}
       weekNumberCalculation={"iso"}
+      weekNumbersWithinDays={true}
       firstDay={1}
       showNonCurrentDates={true}
       locales={[deLocale]}
