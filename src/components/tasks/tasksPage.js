@@ -32,8 +32,8 @@ const TasksPage = view(() => {
       <Navigation />
       <FixedPane>
         <TaskLists />
-        <EventList />
-        <CalendarSelector />
+        {/* <EventList />
+        <CalendarSelector /> */}
       </FixedPane>
       <SplitPane
         defaultSize="40%"

@@ -103,7 +103,7 @@ const TaskList = ({ list, isSelected }) => {
       ) : (
         <TaskListTitle> {list.shortTitle}</TaskListTitle>
       )}
-      <Pill>{tasksStore.getTasks(list.id).length}</Pill>
+      {/* <Pill>{tasksStore.getTasks(list.id).length}</Pill> */}
       <ButtonGroup hidden>
         <EditButton
           onClick={() => {
