@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { view } from "react-easy-state";
-import eventStore from "stores/eventStore";
+import gCalApi from "utils/gCalApi";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -11,29 +11,21 @@ import "@fullcalendar/daygrid/main.css";
 import "components/calendar/fc_finetuning.css";
 
 function gApiEventSource(info, calendar) {
-  // Load the Google+ API
-  // return window.gapi.client.load("calendar", "v3").then(function() {
-  // Assemble the API request
-  console.log(info);
   var request = window.gapi.client.calendar.events.list({
-    calendarId: calendar,
+    calendarId: calendar.id,
     timeMin: info.startStr,
     timeMax: info.endStr,
     singleEvents: "true",
     orderBy: "starttime"
   });
-  // Execute the API request
   return request.then(
     response => response.result.items,
     reason => console.log("Error: " + reason.result.error.message)
   );
-  // });
 }
 
 function ConvertGoogleEventsToFullCalendar(events) {
-  console.log(events);
   return events.map(function(entry) {
-    //console.log(entry);
     var eventsList = {
       id: entry.id,
       title: entry.summary,
@@ -47,58 +39,45 @@ function ConvertGoogleEventsToFullCalendar(events) {
   });
 }
 
-function SingleEventSource(info, num) {
-  return gApiEventSource(info, eventStore.calendarList[num]).then(
-    events => ConvertGoogleEventsToFullCalendar(events),
-    events => console.log("Error")
-  );
-}
-
-function SingleEventSource2(info) {
-  return gApiEventSource(info, eventStore.calendarList[2]).then(
-    events => ConvertGoogleEventsToFullCalendar(events),
-    events => console.log("Error")
-  );
+function addEventSources(fullcalendar, calendars) {
+  calendars.map(calendar => {
+    if (calendar.selected) {
+      fullcalendar.addEventSource({
+        events: function(info) {
+          return gApiEventSource(info, calendar).then(
+            events => ConvertGoogleEventsToFullCalendar(events),
+            error => console.log("Error")
+          );
+        },
+        id: calendar.id,
+        color: calendar.backgroundColor, // an option!
+        textColor: "white" // an option!
+      });
+    }
+  });
 }
 
 const Calendar = props => {
-  function addEventSources(fullcalendar) {
-    eventStore.calendarList.map(gCalendar => {
-      console.log(gCalendar);
-      // I need an to do:
-      if (gCalendar.selected) {
-        addEventSource(fullcalendar, gCalendar);
-      }
-    });
-  }
-
-  function addEventSource(fullcalendar, gCalendar) {
-    fullcalendar.addEventSource({
-      events: function(info) {
-        return gApiEventSource(info, gCalendar.id).then(
-          events => ConvertGoogleEventsToFullCalendar(events),
-          events => console.log("Error")
-        );
-      },
-      id: gCalendar.id,
-      color: gCalendar.backgroundColor, // an option!
-      textColor: "white" // an option!
-    });
-  }
-
+  const [calendars, setCalendars] = useState([]);
   const calRef = useRef(null);
 
   useEffect(() => {
-    addEventSources(calRef.current.getApi(), [eventStore.calendarList]);
-  });
+    const fetchCalendars = async () => {
+      const fetchedCalendars = await gCalApi.listCalendars();
+      setCalendars(fetchedCalendars);
+    };
+    fetchCalendars();
+  }, []);
+
+  useEffect(() => {
+    addEventSources(calRef.current.getApi(), calendars);
+  }, [calendars]);
 
   return (
     <FullCalendar
       ref={calRef}
       defaultView={"dayGridMonth"}
       plugins={[dayGridPlugin]}
-      // events={SingleEventSource}
-      // eventSources={eventSources}
       eventTimeFormat={{
         hour: "numeric",
         minute: "2-digit",
@@ -106,7 +85,7 @@ const Calendar = props => {
       }}
       weekNumbers={true}
       weekNumberCalculation={"iso"}
-      firstDay={1}
+      firstDay={props.firstDayOfWeek}
       showNonCurrentDates={true}
       locales={[deLocale]}
       height={"parent"}
