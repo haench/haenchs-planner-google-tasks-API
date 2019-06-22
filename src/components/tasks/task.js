@@ -10,7 +10,6 @@ import DeleteButton from "components/styled.components/deleteButton";
 import { format } from "date-fns";
 import { deLocale } from "date-fns/locale/de";
 import Pill from "components/styled.components/pill";
-import TaskDetails from "components/tasks/taskDetails.outline";
 
 const LiTask = styled.div`
   display: flex;
@@ -95,11 +94,15 @@ const Task = props => {
           autoFocus={isSelected}
           key={isSelected}
         />
-        <Pill>
-          {task.due
-            ? format(task.due, "Do MMM[.] YYYY", { locale: deLocale })
-            : ""}
-        </Pill>
+
+        {task.due ? (
+          <Pill>
+            {format(task.due, "Do MMM[.] YYYY", { locale: deLocale })}
+          </Pill>
+        ) : (
+          ""
+        )}
+
         <DeleteButton
           onClick={() => tasksStore.deleteTask(task)}
           defaultHidden

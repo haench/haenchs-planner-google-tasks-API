@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useReducer } from "react";
 import tasksStore from "stores/tasksStore";
 import { view } from "react-easy-state";
 import Button from "components/styled.components/button";
@@ -10,6 +10,9 @@ import Editor from "rich-markdown-editor";
 import Header from "components/styled.components/header";
 import EditButton from "components/styled.components/editButton";
 import SaveButton from "components/styled.components/saveButton";
+import { DateSingleInput } from "@datepicker-react/styled";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
 
 const DateDisplay = styled.span`
   font-size: 16px;
@@ -31,8 +34,16 @@ const Seperator = styled.div`
   border-style: solid;
 `;
 
+const ThemedDateSingleInput = styled(DateSingleInput)`
+  label {
+    border: 0px solid #bcbec0;
+    background: #444444;
+  }
+`;
+
 const TaskDetails = props => {
   const [isReadOnly, setReadOnly] = useState(true);
+
   const debounceUpdateTask = useCallback(
     debounce(value => {
       tasksStore.updateTask({ ...props.task, notes: value() });
@@ -40,10 +51,20 @@ const TaskDetails = props => {
     []
   );
 
+  const handleDayChange = day => {
+    tasksStore.updateTask({ ...props.task, due: day.toISOString() });
+  };
+
   return (
     <>
       <Header.Wrapper>
         <Header.Title>{props.task.title}</Header.Title>
+        <DayPickerInput
+          style={{
+            marginRight: "72px"
+          }}
+          onDayChange={handleDayChange}
+        />
 
         {isReadOnly ? (
           <EditButton
@@ -62,11 +83,11 @@ const TaskDetails = props => {
             size="24"
           />
         )}
-        <DateDisplay>
+        {/* <DateDisplay>
           {props.task.due
             ? format(props.task.due, " Do MMM[.] YYYY", { locale: deLocale })
             : null}
-        </DateDisplay>
+        </DateDisplay> */}
       </Header.Wrapper>
       <Seperator />
       <StyledEditor
