@@ -103,6 +103,7 @@ const tasksStore = store({
     await Promise.all(
       listsStore.lists.map(async list => await tasksStore.listTasks(list.id))
     );
+    console.log(tasksStore.tasks.flat());
   },
 
   async insertTask(listId, task) {
