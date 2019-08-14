@@ -45,8 +45,8 @@ const TaskLists = () => {
   const lists = listsStore.lists.filter(
     list => list.id !== configStore.configListId
   );
-  console.log(lists);
-  console.log(groups);
+  console.log("lists ", lists);
+  console.log("groups ", groups);
 
   return (
     <>
